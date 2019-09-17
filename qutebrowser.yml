@@ -1,0 +1,232 @@
+config_version: 2
+settings:
+  bindings.commands:
+    global:
+      normal:
+        ;I: null
+        ;O: null
+        ;R: null
+        ;Y: null
+        ;b: null
+        ;d: null
+        ;f: null
+        ;h: null
+        ;i: null
+        ;o: null
+        ;r: null
+        ;t: null
+        ;y: null
+        <Alt+1>: null
+        <Alt+2>: null
+        <Alt+3>: null
+        <Alt+4>: null
+        <Alt+5>: null
+        <Alt+6>: null
+        <Alt+7>: null
+        <Alt+8>: null
+        <Alt+9>: null
+        <Back>: null
+        <Ctrl+Alt+p>: null
+        <Ctrl+F5>: null
+        <Ctrl+PgDown>: null
+        <Ctrl+PgUp>: null
+        <Ctrl+Return>: follow-selected -w
+        <Ctrl+Shift+Tab>: null
+        <Ctrl+Shift+n>: null
+        <Ctrl+Shift+t>: null
+        <Ctrl+Shift+w>: null
+        <Ctrl+Space>: open -w
+        <Ctrl+Tab>: null
+        <Ctrl+^>: null
+        <Ctrl+a>: null
+        <Ctrl+b>: home
+        <Ctrl+h>: open qute://history
+        <Ctrl+i>: inspector
+        <Ctrl+n>: null
+        <Ctrl+p>: print
+        <Ctrl+q>: null
+        <Ctrl+s>: view-source -e
+        <Ctrl+t>: null
+        <Ctrl+w>: null
+        <Ctrl+x>: null
+        <Escape>: search ;; fullscreen --leave ;; jseval -q document.activeElement.blur()
+        <F11>: null
+        <F5>: null
+        <Forward>: null
+        B: null
+        D: null
+        F: null
+        J: null
+        K: null
+        M: null
+        O: null
+        PP: null
+        Pp: null
+        Sb: null
+        Sh: null
+        Sq: null
+        Ss: null
+        T: null
+        ZQ: null
+        ZZ: null
+        '[[': null
+        ']]': null
+        ad: null
+        b: null
+        cd: null
+        co: null
+        d: close
+        f: null
+        fd: hint links download
+        ff: hint all
+        fh: hint all hover
+        fw: hint all window
+        fy: hint links yank
+        g: scroll-to-perc 0
+        g$: null
+        g0: null
+        gB: null
+        gC: null
+        gD: null
+        gO: null
+        gU: null
+        g^: null
+        ga: null
+        gb: null
+        gd: null
+        gf: null
+        gg: null
+        gi: null
+        gl: null
+        gm: null
+        go: null
+        gr: null
+        gt: null
+        gu: null
+        m: null
+        ma: set-cmd-text -s :quickmark-add {url:pretty}
+        md: quickmark-del
+        ml: set-cmd-text -s :quickmark-load
+        o: set-cmd-text -s :open
+        p: set-cmd-text :open {url:pretty}
+        pP: null
+        pp: null
+        sf: null
+        sk: null
+        sl: null
+        ss: null
+        tIH: null
+        tIh: null
+        tIu: null
+        tPH: null
+        tPh: null
+        tPu: null
+        tSH: null
+        tSh: null
+        tSu: null
+        th: null
+        tiH: null
+        tih: null
+        tiu: null
+        tl: null
+        tpH: null
+        tph: null
+        tpu: null
+        tsH: null
+        tsh: null
+        tsu: null
+        w: tab-clone -w
+        wB: null
+        wO: null
+        wP: null
+        wb: null
+        wf: null
+        wh: null
+        wi: null
+        wl: null
+        wo: null
+        wp: null
+        xO: null
+        xo: null
+        yD: null
+        yM: null
+        yP: null
+        yT: null
+        yY: null
+        zc: download-clear
+        zd: download-delete
+        zx: download-cancel
+        zz: download
+        '{{': null
+        '}}': null
+  content.autoplay:
+    global: false
+  content.geolocation:
+    https://www.google.com: false
+  content.headers.user_agent:
+    global: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko)
+      Chrome/71.0.3578.98 Safari/537.36
+  content.javascript.can_access_clipboard:
+    global: true
+  content.javascript.can_open_tabs_automatically:
+    global: true
+  content.notifications:
+    https://www.reddit.com: false
+  content.plugins:
+    global: true
+  content.user_stylesheets:
+    global: null
+  downloads.location.directory:
+    global: /tmp/downloads
+  downloads.location.prompt:
+    global: false
+  downloads.location.remember:
+    global: false
+  downloads.remove_finished:
+    global: -1
+  editor.command:
+    global:
+    - st
+    - -e
+    - nvim
+    - '{file}'
+  fonts.statusbar:
+    global: 10pt monospace
+  statusbar.position:
+    global: top
+  statusbar.widgets:
+    global:
+    - keypress
+    - url
+    - scroll
+    - history
+    - progress
+  tabs.position:
+    global: top
+  tabs.show:
+    global: never
+  tabs.tabs_are_windows:
+    global: true
+  tabs.title.format:
+    global: '{audio}{current_title}'
+  url.default_page:
+    global: about:blank
+  url.searchengines:
+    global:
+      DEFAULT: https://google.com/search?q={}
+  url.start_pages:
+    global: about:blank
+  url.yank_ignored_parameters:
+    global:
+    - ref
+    - utm_source
+    - utm_medium
+    - utm_campaign
+    - utm_term
+    - utm_content
+  window.hide_decoration:
+    global: false
+  window.title_format:
+    global: '{perc}{current_title}'
+  zoom.default:
+    global: 100%
