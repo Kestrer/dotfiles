@@ -74,6 +74,10 @@ wman () {
 	$BROWSER /tmp/manpage.html &
 }
 
+cf () {
+	$EDITOR ~/code/dotfiles
+}
+
 pubip () {
 	curl https://ipinfo.io/ip
 }
@@ -88,49 +92,28 @@ mkdir () { # "mkdir -c" mkdirs and cds
 alias ..='cd ..'
 alias ,,='cd -'
 
-alias svi="sudo $EDITOR"
+alias se="sudo $EDITOR"
 alias copy="xclip -selection clipboard"
-
 # package manager commands
 if [ -x "$(command -v xbps-install)" ]
 then
-	alias p-install="sudo xbps-install -S "
-	alias p-search="sudo xbps-query -Rs "
-	alias p-update="sudo xbps-install -Su"
-	alias p-remove="sudo xbps-remove -R "
+	alias pinstall="sudo xbps-install -S "
+	alias psearch="sudo xbps-query -Rs "
+	alias pupdate="sudo xbps-install -Su"
+	alias premove="sudo xbps-remove -R "
 elif [ -x "$(command -v apt)" ]
 then
-	alias p-install="sudo apt install "
-	alias p-search="sudo apt search "
-	alias p-update="sudo apt update && sudo apt upgrade"
-	alias p-remove="sudo apt remove "
+	alias pinstall="sudo apt install "
+	alias psearch="sudo apt search "
+	alias pupdate="sudo apt update && sudo apt upgrade"
+	alias premove="sudo apt remove "
 elif [ -x "$(command -v pacman)" ]
 then
-	alias p-install="sudo pacman -S "
-	alias p-search="sudo pacman -Ss "
-	alias p-update="sudo pacman -Syu"
-	alias p-remove="sudo pacman -Rs "
+	alias pinstall="sudo pacman -S "
+	alias psearch="sudo pacman -Ss "
+	alias pupdate="sudo pacman -Syu"
+	alias premove="sudo pacman -Rs "
 fi
-
-# configuration
-cf () {
-	case $1 in
-		vi)
-			$EDITOR ~/.config/nvim/init.vim;;
-		bash)
-			$EDITOR ~/.bashrc;;
-		profile)
-			$EDITOR ~/.profile;;
-		i3)
-			$EDITOR ~/.config/i3/config;;
-		i3status)
-			$EDITOR ~/.config/i3status/config;;
-		x)
-			$EDITOR ~/.xinitrc;;
-		*)
-			echo "config: Unknown configuration $1.";;
-	esac
-}
 
 sclear () {
 	for ((i=1;i<=500;i++))
