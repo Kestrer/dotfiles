@@ -7,6 +7,7 @@ install:
 	mkdir -p ${HOME}/.config/nvim
 	mkdir -p ${HOME}/.config/qutebrowser
 	mkdir -p ${HOME}/.config/rofi
+	mkdir -p ${HOME}/.config/Xmodmap
 	
 	-ln -s ${PWD}/bashrc          ${HOME}/.bashrc
 	-ln -s ${PWD}/dunstrc         ${HOME}/.config/dunst/dunstrc
@@ -18,5 +19,4 @@ install:
 	-ln -s ${PWD}/qutebrowser.yml ${HOME}/.config/qutebrowser/autoconfig.yml
 	-ln -s ${PWD}/rofi            ${HOME}/.config/rofi/config
 	-ln -s ${PWD}/xinitrc         ${HOME}/.xinitrc
-	-ln -s ${PWD}/Xmodmap         ${HOME}/.Xmodmap
-	-echo '. ~/.profile' > ${HOME}/.bash_profile
+	-ln -s ${PWD}/Xmodmap         ${HOME}/.config/Xmodmap/Xmodmap

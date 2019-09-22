@@ -3,7 +3,7 @@
 # init script for X11
 
 # load key configuration
-xmodmap .Xmodmap
+xmodmap ~/.config/Xmodmap/Xmodmap
 
 # hide the cursor when a key is pressed
 xbanish &

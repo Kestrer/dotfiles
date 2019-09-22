@@ -27,7 +27,7 @@ if [ -d "$HOME/.local/bin" ] ; then
 fi
 
 # set path
-export PATH=$PATH:/opt/bin:$HOME/.cargo/bin
+export PATH=$PATH:/opt/bin
 
 # set XDG variables
 export XDG_DATA_HOME="$HOME/.local/share"
