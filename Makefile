@@ -20,3 +20,16 @@ install:
 	-ln -s ${PWD}/rofi            ${HOME}/.config/rofi/config
 	-ln -s ${PWD}/xinitrc         ${HOME}/.xinitrc
 	-ln -s ${PWD}/Xmodmap         ${HOME}/.config/Xmodmap/Xmodmap
+
+uninstall:
+	rm ${HOME}/.bashrc
+	rm ${HOME}/.config/dunst/dunstrc
+	rm ${HOME}/.config/i3/config
+	rm ${HOME}/.config/i3status/config
+	rm ${HOME}/.config/nvim/init.vim
+	rm ${HOME}/.profile
+	rm ${HOME}/.config/qutebrowser/quickmarks
+	rm ${HOME}/.config/qutebrowser/autoconfig.yml
+	rm ${HOME}/.config/rofi/config
+	rm ${HOME}/.xinitrc
+	rm ${HOME}/.config/Xmodmap/Xmodmap
