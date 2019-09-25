@@ -8,13 +8,13 @@ set $mod mod4
 font pango:monospace 8
 
 # start st
-bindsym $mod+Return exec st
+bindsym $mod+Return exec "$TERMINAL"
 # start qutebrowser
-bindsym $mod+space exec $BROWSER
+bindsym $mod+space exec "$BROWSER"
 # start rofi (a program launcher)
-bindsym $mod+d exec rofi -show run
+bindsym $mod+d exec "rofi -show run"
 # start menu-calc (a calculator)
-bindsym $mod+equal exec rofi -show calc -modi calc -no-show-match -no-sort
+bindsym $mod+equal exec "rofi -show calc -modi calc -no-show-match -no-sort"
 
 # kill window
 bindsym $mod+Shift+q kill
@@ -81,15 +81,15 @@ workspace $ws7 output $m2
 workspace $ws8 output $m1
 workspace $ws9 output $m1
 
-# switch to workspace, mod3 on my system is Menu
-bindsym $mod+0 workspace $ws0
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
+# switch to workspace
+bindsym $mod+0 workspace $ws1; workspace $ws0
+bindsym $mod+1 workspace $ws0; workspace $ws1
+bindsym $mod+2 workspace $ws3; workspace $ws2
+bindsym $mod+3 workspace $ws2; workspace $ws3
+bindsym $mod+4 workspace $ws5; workspace $ws4
+bindsym $mod+5 workspace $ws4; workspace $ws5
+bindsym $mod+6 workspace $ws7; workspace $ws6
+bindsym $mod+7 workspace $ws6; workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+Control+l workspace next
@@ -117,7 +117,7 @@ bindsym $mod+Control+r restart
 #bindsym $mod+Control+e exec "i3-nagbar -t warning -m 'E.' -B 'Exit i3' 'i3-msg exit'"
 bindsym $mod+Control+e exit
 # lock
-bindsym --release $mod+s exec slock
+bindsym --release $mod+s exec "slock"
 
 # hide borders on the edge
 hide_edge_borders smart

@@ -40,6 +40,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
 export BROWSER='qutebrowser'
+export TERMINAL='st'
 
 # setup SSH
 SSH_ENV="$HOME/.ssh/environment"
