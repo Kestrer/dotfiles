@@ -8,6 +8,8 @@ PS1="%B%{$fg[blue]%}%~%{$reset_color%}$%b "
 HISTSIZE=1000
 SAVEHIST=1000
 HISTFILE=~/.cache/zsh/history
+HISTORY_IGNORE='fg'
+setopt HIST_IGNORE_SPACE
 
 # enable spelling correction
 setopt correctall
