@@ -12,7 +12,7 @@ xbanish &
 xrandr --output HDMI1 --primary --left-of DP1
 
 # set background image
-feh --randomize --bg-fill ~/documents/wallpapers/*
+feh --no-fehbg --randomize --bg-fill ~/documents/wallpapers/*
 
 # use dbus and i3wm
 exec dbus-launch --exit-with-session i3
