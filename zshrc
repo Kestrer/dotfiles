@@ -105,6 +105,11 @@ _comp_options+=(globdots)
 
 # vi
 bindkey -v
+# allow deleting to work for stuff I have inputted previously
+bindkey -v '^H' backward-delete-char
+bindkey -v '^?' backward-delete-char
+bindkey -v '^W' backward-kill-word
+bindkey -v '^U' kill-line
 export KEYTIMEOUT=1
 
 # change cursor shape for different vi modes

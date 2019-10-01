@@ -21,7 +21,7 @@ set relativenumber
 set autoread
 set encoding=utf-8
 set fileencoding=utf-8
-set backspace=indent,eol,start
+set backspace=indent,eol,start " make backspace work
 set autoindent    " autoindent based on line above, works most of the time
 set smartindent   " smarter indent for C-like languages
 set tabstop=4     " tabs are 4 spaces
