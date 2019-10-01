@@ -23,11 +23,11 @@ alias egrep='egrep --color=auto'
 # aliases
 alias ll='ls -aFlh'
 alias l='ls -aFlh'
-alias cf="$EDITOR ~/code/dotfiles"
+alias cf="cd ~/code/dotfiles; $VISUAL ."
 alias pubip='curl https://ipinfo.io/ip'
 alias ..='cd ..'
 alias ,,='cd -'
-alias se="sudo $EDITOR"
+alias se="sudo $VISUAL"
 alias copy="xclip -selection clipboard"
 
 # package manager commands
@@ -114,20 +114,20 @@ export KEYTIMEOUT=1
 
 # change cursor shape for different vi modes
 function zle-keymap-select {
-  if [[ ${KEYMAP} == vicmd ]] ||
-     [[ $1 = 'block' ]]; then
-    echo -ne '\e[1 q'
-  elif [[ ${KEYMAP} == main ]] ||
-       [[ ${KEYMAP} == viins ]] ||
-       [[ ${KEYMAP} = '' ]] ||
-       [[ $1 = 'beam' ]]; then
-    echo -ne '\e[5 q'
-  fi
+	if [[ ${KEYMAP} == vicmd ]] ||
+		 [[ $1 = 'block' ]]; then
+		echo -ne '\e[1 q'
+	elif [[ ${KEYMAP} == main ]] ||
+		 [[ ${KEYMAP} == viins ]] ||
+		 [[ ${KEYMAP} = '' ]] ||
+		 [[ $1 = 'beam' ]]; then
+		echo -ne '\e[5 q'
+	fi
 }
 zle -N zle-keymap-select
 zle-line-init() {
-    zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-    echo -ne "\e[5 q"
+	zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+	echo -ne "\e[5 q"
 }
 zle -N zle-line-init
 echo -ne '\e[5 q' # Use beam shape cursor on startup.

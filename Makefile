@@ -17,6 +17,7 @@ install: all
 	-ln -s ${PWD}/quickmarks      ${HOME}/.config/qutebrowser/quickmarks
 	-ln -s ${PWD}/qutebrowser.yml ${HOME}/.config/qutebrowser/autoconfig.yml
 	-ln -s ${PWD}/rofi            ${HOME}/.config/rofi/config
+	-ln -s ${PWD}/scripts         ${HOME}/.config/zsh/scripts
 	-ln -s ${PWD}/xinitrc         ${HOME}/.xinitrc
 	-ln -s ${PWD}/Xmodmap         ${HOME}/.config/Xmodmap/Xmodmap
 	-ln -s ${PWD}/zprofile        ${HOME}/.config/zsh/.zprofile
@@ -33,6 +34,7 @@ uninstall:
 	rm ${HOME}/.config/qutebrowser/quickmarks
 	rm ${HOME}/.config/qutebrowser/autoconfig.yml
 	rm ${HOME}/.config/rofi/config
+	rm -r ${HOME}/.config/zsh/scripts
 	rm ${HOME}/.xinitrc
 	rm ${HOME}/.config/Xmodmap/Xmodmap
 	rm ${HOME}/.config/zsh/.zprofile
