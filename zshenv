@@ -29,6 +29,7 @@ export BROWSER='qutebrowser'
 export TERMINAL='st'
 export READER='zathura'
 export SHELL='zsh'
+export PAGER='less'
 
 # other
 export ZDOTDIR="$HOME/.config/zsh"

@@ -8,7 +8,7 @@ set $mod mod4
 font pango:monospace 8
 
 # start st
-bindsym $mod+Return exec "$TERMINAL"
+bindsym $mod+Return exec --no-startup-id "$TERMINAL"
 # start qutebrowser
 bindsym $mod+space exec "$BROWSER"
 # start rofi (a program launcher)
