@@ -7,6 +7,7 @@ Just run `make install` to install to your system. Remember to delete your old c
 - dbus
 - dunst
 - feh
+- fontawesome
 - i3wm
 - i3status
 - make
