@@ -19,11 +19,13 @@ alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
+alias pcre2grep='pcre2grep --color=auto'
 
 # aliases
 alias ll='ls -aFlh'
 alias l='ls -aFlh'
-alias cf="cd ~/code/dotfiles; $VISUAL ."
+CFDIR=$(dirname $(readlink -f ${(%):-%N}))
+alias cf="cd $CFDIR; $VISUAL ."
 alias pubip='curl https://ipinfo.io/ip'
 alias ..='cd ..'
 alias ,,='cd -'
@@ -96,6 +98,18 @@ function sclear () {
 	clear
 }
 
+function cmk () {
+	cp $CFDIR/c.mk Makefile
+	BASENAME=$(basename $(pwd))
+	echo .gitignore >> .gitignore
+	echo objects >> .gitignore
+	echo picobjects >> .gitignore
+	echo deps >> .gitignore
+	echo $BASENAME >> .gitignore
+	echo lib$BASENAME.a >> .gitignore
+	echo lib$BASENAME.so >> .gitignore
+}
+
 # tab complete
 autoload -U compinit
 zstyle ':completion:*' menu select
@@ -112,26 +126,29 @@ bindkey -v '^W' backward-kill-word
 bindkey -v '^U' kill-line
 export KEYTIMEOUT=1
 
-# change cursor shape for different vi modes
-function zle-keymap-select {
-	if [[ ${KEYMAP} == vicmd ]] ||
-		 [[ $1 = 'block' ]]; then
-		echo -ne '\e[1 q'
-	elif [[ ${KEYMAP} == main ]] ||
-		 [[ ${KEYMAP} == viins ]] ||
-		 [[ ${KEYMAP} = '' ]] ||
-		 [[ $1 = 'beam' ]]; then
-		echo -ne '\e[5 q'
-	fi
-}
-zle -N zle-keymap-select
-zle-line-init() {
-	zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
-	echo -ne "\e[5 q"
-}
-zle -N zle-line-init
-echo -ne '\e[5 q' # Use beam shape cursor on startup.
-preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+# change cursor shape for different vi modes; doesn't work on Linux console
+if [ $TERM = 'st-256color' ]
+then
+	function zle-keymap-select {
+		if [[ ${KEYMAP} == vicmd ]] ||
+			 [[ $1 = 'block' ]]; then
+			echo -ne '\e[1 q'
+		elif [[ ${KEYMAP} == main ]] ||
+			 [[ ${KEYMAP} == viins ]] ||
+			 [[ ${KEYMAP} = '' ]] ||
+			 [[ $1 = 'beam' ]]; then
+			echo -ne '\e[5 q'
+		fi
+	}
+	zle -N zle-keymap-select
+	zle-line-init() {
+		zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
+		echo -ne "\e[5 q"
+	}
+	zle -N zle-line-init
+	echo -ne '\e[5 q' # Use beam shape cursor on startup.
+	preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+fi
 
 # ctrl+e to edit command in nvim
 autoload edit-command-line; zle -N edit-command-line

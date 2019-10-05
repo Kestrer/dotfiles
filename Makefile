@@ -1,14 +1,15 @@
 all:
 
 install: all
-	mkdir -p ${HOME}/.config/dunst
-	mkdir -p ${HOME}/.config/i3
-	mkdir -p ${HOME}/.config/i3status
-	mkdir -p ${HOME}/.config/nvim
-	mkdir -p ${HOME}/.config/qutebrowser
-	mkdir -p ${HOME}/.config/rofi
-	mkdir -p ${HOME}/.config/Xmodmap
-	mkdir -p ${HOME}/.config/zsh
+	mkdir -p \
+		${HOME}/.config/dunst \
+		${HOME}/.config/i3 \
+		${HOME}/.config/i3status \
+		${HOME}/.config/nvim \
+		${HOME}/.config/qutebrowser \
+		${HOME}/.config/rofi \
+		${HOME}/.config/Xmodmap \
+		${HOME}/.config/zsh
 	
 	-ln -s ${PWD}/dunstrc         ${HOME}/.config/dunst/dunstrc
 	-ln -s ${PWD}/i3              ${HOME}/.config/i3/config
@@ -27,17 +28,18 @@ install: all
 	-ln -s ${HOME}/.config/zsh/.zprofile ${HOME}/.zprofile
 
 uninstall:
-	rm ${HOME}/.config/dunst/dunstrc
-	rm ${HOME}/.config/i3/config
-	rm ${HOME}/.config/i3status/config
-	rm ${HOME}/.config/nvim/init.vim
-	rm ${HOME}/.config/qutebrowser/quickmarks
-	rm ${HOME}/.config/qutebrowser/autoconfig.yml
-	rm ${HOME}/.config/rofi/config
-	rm -r ${HOME}/.config/zsh/scripts
-	rm ${HOME}/.xinitrc
-	rm ${HOME}/.config/Xmodmap/Xmodmap
-	rm ${HOME}/.config/zsh/.zprofile
-	rm ${HOME}/.config/zsh/.zshenv
-	rm ${HOME}/.config/zsh/.zshrc
-	rm ${HOME}/.zprofile
+	rm -r \
+		${HOME}/.config/dunst/dunstrc \
+		${HOME}/.config/i3/config \
+		${HOME}/.config/i3status/config \
+		${HOME}/.config/nvim/init.vim \
+		${HOME}/.config/qutebrowser/quickmarks \
+		${HOME}/.config/qutebrowser/autoconfig.yml \
+		${HOME}/.config/rofi/config \
+		${HOME}/.config/zsh/scripts \
+		${HOME}/.xinitrc \
+		${HOME}/.config/Xmodmap/Xmodmap \
+		${HOME}/.config/zsh/.zprofile \
+		${HOME}/.config/zsh/.zshenv \
+		${HOME}/.config/zsh/.zshrc \
+		${HOME}/.zprofile

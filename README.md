@@ -13,6 +13,7 @@ Just run `make install` to install to your system. Remember to delete your old c
 - make
 - neovim
 - notify-send
+- pcre2grep
 - qutebrowser
 - rofi
 - rofi-calc
