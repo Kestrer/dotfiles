@@ -2,17 +2,17 @@
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ]; then
-	PATH="$HOME/bin:$PATH"
+	export PATH="$HOME/bin:$PATH"
 fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/.local/bin" ]; then
-	PATH="$HOME/.local/bin:$PATH"
+	export PATH="$HOME/.local/bin:$PATH"
 fi
 
 # set PATH so it includes optional bin if it exists
 if [ -d "/opt/bin" ]; then
-	PATH="/opt/bin:$PATH"
+	export PATH="/opt/bin:$PATH"
 fi
 
 # set XDG variables
