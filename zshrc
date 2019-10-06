@@ -99,15 +99,32 @@ function sclear () {
 }
 
 function cmk () {
-	cp $CFDIR/c.mk Makefile
+	ln -f $CFDIR/c.mk Makefile
+
 	BASENAME=$(basename $(pwd))
-	echo .gitignore >> .gitignore
-	echo objects >> .gitignore
-	echo picobjects >> .gitignore
-	echo deps >> .gitignore
-	echo $BASENAME >> .gitignore
-	echo lib$BASENAME.a >> .gitignore
-	echo lib$BASENAME.so >> .gitignore
+	cat > .gitignore <<- EOF
+	.gitignore
+	objects
+	picobjects
+	deps
+	$BASENAME
+	lib$BASENAME.a
+	lib$BASENAME.so
+	EOF
+
+	if [[ ! -a config.mk ]]
+	then
+		cat > config.mk <<- EOF
+		CC::=clang
+		CXX::=clang++
+		CFLAGS::=-Wall -Wextra -pedantic -Werror -g -Og
+		CXXFLAGS::=-std=c++2a
+		LIBS::=
+		LDFLAGS::=-rdynamic -Wl,-rpath=/usr/local/lib -L/usr/local/lib
+
+		PREFIX::=/usr/local
+		EOF
+	fi
 }
 
 # tab complete
