@@ -21,7 +21,7 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias pcre2grep='pcre2grep --color=auto'
 
-# aliases
+# useful aliases
 alias ll='ls -aFlh'
 alias l='ls -aFlh'
 CFDIR=$(dirname $(readlink -f ${(%):-%N}))

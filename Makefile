@@ -8,6 +8,7 @@ install: all
 		${HOME}/.config/nvim \
 		${HOME}/.config/qutebrowser \
 		${HOME}/.config/rofi \
+		${HOME}/.config/X11 \
 		${HOME}/.config/Xmodmap \
 		${HOME}/.config/zsh
 	
@@ -19,13 +20,11 @@ install: all
 	-ln -s ${PWD}/qutebrowser.yml ${HOME}/.config/qutebrowser/autoconfig.yml
 	-ln -s ${PWD}/rofi            ${HOME}/.config/rofi/config
 	-ln -s ${PWD}/scripts         ${HOME}/.config/zsh/scripts
-	-ln -s ${PWD}/xinitrc         ${HOME}/.xinitrc
+	-ln -s ${PWD}/xinitrc         ${HOME}/.config/X11/xinitrc
 	-ln -s ${PWD}/Xmodmap         ${HOME}/.config/Xmodmap/Xmodmap
 	-ln -s ${PWD}/zprofile        ${HOME}/.config/zsh/.zprofile
-	-ln -s ${PWD}/zshenv          ${HOME}/.config/zsh/.zshenv
+	-ln -s ${PWD}/zshenv          ${HOME}/.zshenv
 	-ln -s ${PWD}/zshrc           ${HOME}/.config/zsh/.zshrc
-	
-	-ln -s ${HOME}/.config/zsh/.zprofile ${HOME}/.zprofile
 
 uninstall:
 	rm -r \
@@ -36,10 +35,7 @@ uninstall:
 		${HOME}/.config/qutebrowser/quickmarks \
 		${HOME}/.config/qutebrowser/autoconfig.yml \
 		${HOME}/.config/rofi/config \
-		${HOME}/.config/zsh/scripts \
-		${HOME}/.xinitrc \
-		${HOME}/.config/Xmodmap/Xmodmap \
-		${HOME}/.config/zsh/.zprofile \
-		${HOME}/.config/zsh/.zshenv \
-		${HOME}/.config/zsh/.zshrc \
-		${HOME}/.zprofile
+		${HOME}/.config/zsh \
+		${HOME}/.config/X11 \
+		${HOME}/.config/Xmodmap \
+		${HOME}/.zshenv

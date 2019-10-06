@@ -31,5 +31,10 @@ export READER='zathura'
 export SHELL='zsh'
 export PAGER='less'
 
-# other
-export ZDOTDIR="$HOME/.config/zsh"
+# set dirs
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"

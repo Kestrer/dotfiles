@@ -1,19 +1,4 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-" let Vundle manage Vundle, required
-Plugin 'gmarik/Vundle.vim'
-" nerdtree
-Plugin 'scrooloose/nerdtree'
-" solarized
-Plugin 'iCyMind/NeoSolarized'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
+set nocompatible              " be iMproved
 
 syntax on "syntax highlighting
 set number
@@ -29,39 +14,51 @@ set softtabstop=4
 set shiftwidth=4  " when reading, tabs are 4 spaces
 set noexpandtab
 
+" netrw
+" Press V to open file
+" P to open file in old window
+let g:netrw_browse_split = 0
+let g:netrw_winsize = 90
+let g:netrw_banner = 0
+let g:netrw_altv = 1
+let g:netrw_liststyle = 3
+
 " python is weird lol
 augroup python
 	autocmd!
 	autocmd FileType python setlocal noet ts=4
 augroup end
 
-autocmd StdinReadPre * let s:std_in=1 "load nerdtree on startup
-autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
-
-let g:NERDTreeNodeDelimiter = "\u00a0" "replace the ^G in nerdtree with the correct nbsp
-
+"add closing brace
 inoremap {<CR> {<CR>}<Esc>ko
 inoremap (<CR> (<CR>)<Esc>ko
 inoremap [<CR> [<CR>]<Esc>ko
-"add closing brace
 
 :command! W w
 :command! Q q
 
+" automatically reload init.vim
 augroup myvimrchooks
     au!
     autocmd bufwritepost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim
-augroup END "automatically reload init.vim
+augroup END 
 
 set ruler
 
-nmap Y y$
 " make Y go to end of line (more logical at expense of compatibility)
-nmap X dd
+nmap Y y$
 " dd -> X now is the same as cc -> S
+nmap X dd
 
+" solarized
 set termguicolors
 colorscheme NeoSolarized
+let g:neosolarized_contrast = "normal"
+let g:neosolarized_visibility = "high"
+let g:neosolarized_bold = 1
+let g:neosolarized_underline = 1
+let g:neosolarized_italic = 1
+set background=dark
 
 " type #prag in C to get automatic header guards
 autocmd FileType c let fileheader = substitute(substitute(fnamemodify(expand("%"), ":~:."), "/", "_", "g"), "\\.", "_", "g")
@@ -71,4 +68,3 @@ autocmd FileType cpp inoremap #prag <Esc>:let @f = fileheader<Enter>i#pragma onc
 
 " type <// while in HTML to autocomplete
 autocmd FileType html inoremap <// </<C-X><C-O>
-
