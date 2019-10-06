@@ -1,0 +1,31 @@
+# terminal
+super+Return
+	exec $TERMINAL
+
+# web browser
+super+space
+	exec $BROWSER
+
+# program launcher
+super+d
+	exec rofi -show run
+
+# calculator
+super+equal
+	exec rofi -show calc -modi calc -no-show-match -no-sort
+
+# full screen screenshot
+Print
+	exec scrot ~/screenshots/screenshot_%Y-%m-%d-%H:%M:%S.png
+
+# select area screenshot
+super+Print
+	exec scrot -s ~/screenshots/screenshot_%Y-%m-%d-%H:%M:%S.png
+
+# current window screenshot
+super+shift+Print
+	exec scrot -u ~/screenshots/screenshot_%Y-%m-%d-%H:%M:%S.png
+
+# lock
+super+s
+	exec slock

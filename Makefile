@@ -8,6 +8,7 @@ install: all
 		${HOME}/.config/nvim \
 		${HOME}/.config/qutebrowser \
 		${HOME}/.config/rofi \
+		${HOME}/.config/sxhkd \
 		${HOME}/.config/X11 \
 		${HOME}/.config/Xmodmap \
 		${HOME}/.config/zsh
@@ -20,7 +21,9 @@ install: all
 	-ln -s ${PWD}/qutebrowser.yml ${HOME}/.config/qutebrowser/autoconfig.yml
 	-ln -s ${PWD}/rofi            ${HOME}/.config/rofi/config
 	-ln -s ${PWD}/scripts         ${HOME}/.config/zsh/scripts
+	-ln -s ${PWD}/sxhkdrc         ${HOME}/.config/sxhkd/sxhkdrc
 	-ln -s ${PWD}/xinitrc         ${HOME}/.config/X11/xinitrc
+	-ln -s ${PWD}/xserverrc       ${HOME}/.config/X11/xserverrc
 	-ln -s ${PWD}/Xmodmap         ${HOME}/.config/Xmodmap/Xmodmap
 	-ln -s ${PWD}/zprofile        ${HOME}/.config/zsh/.zprofile
 	-ln -s ${PWD}/zshenv          ${HOME}/.zshenv
@@ -35,6 +38,7 @@ uninstall:
 		${HOME}/.config/qutebrowser/quickmarks \
 		${HOME}/.config/qutebrowser/autoconfig.yml \
 		${HOME}/.config/rofi/config \
+		${HOME}/.config/sxhkd/sxhkdrc \
 		${HOME}/.config/zsh \
 		${HOME}/.config/X11 \
 		${HOME}/.config/Xmodmap \

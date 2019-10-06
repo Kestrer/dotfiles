@@ -5,8 +5,21 @@
 # load key configuration
 xmodmap ~/.config/Xmodmap/Xmodmap
 
+# source xinirc.d
+if [ -d /etc/X11/xinit/xinitrc.d ]
+then
+	for script in /etc/X11/xinit/xinitrc.d/?*.sh
+	do
+		[ -x "$script" ] && source "$script"
+	done
+	unset f
+fi
+
 # hide the cursor when a key is pressed
 xbanish &
+
+# hotkeys
+sxhkd &
 
 # monitor setup
 xrandr --output HDMI1 --primary --left-of DP1

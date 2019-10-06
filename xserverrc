@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# init script for x server
+exec /bin/X -nolisten tcp "$@" $(tty | sed 's/\/dev\/tty/vt/')

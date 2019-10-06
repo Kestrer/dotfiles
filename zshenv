@@ -29,6 +29,7 @@ export BROWSER='qutebrowser'
 export TERMINAL='st'
 export READER='zathura'
 export SHELL='zsh'
+export SXHKD_SHELL='sh'
 export PAGER='less'
 
 # set dirs
@@ -37,4 +38,5 @@ export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"

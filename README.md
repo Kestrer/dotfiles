@@ -18,7 +18,8 @@ Just run `make install` to install to your system. Remember to delete your old c
 - rofi
 - rofi-calc
 - scrot
-- st
+- st (with scrollback patch)
+- sxhkd
 - TeX
 - xbanish
 - xclip
