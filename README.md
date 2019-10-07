@@ -8,8 +8,8 @@ Just run `make install` to install to your system. Remember to delete your old c
 - dunst
 - feh
 - fontawesome
-- i3wm
 - i3status
+- i3wm
 - make
 - neovim
 - notify-send
@@ -18,6 +18,7 @@ Just run `make install` to install to your system. Remember to delete your old c
 - rofi
 - rofi-calc
 - scrot
+- slock (with dpms patch)
 - st (with scrollback patch)
 - sxhkd
 - TeX
