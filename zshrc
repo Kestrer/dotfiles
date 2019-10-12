@@ -2,7 +2,14 @@
 
 # colors and prompt
 autoload -U colors && colors
-PS1="%B%{$fg[blue]%}%~%{$reset_color%}$%b "
+PS1="%B%{$fg[blue]%}%~%{$reset_color%}"
+if [[ $UID == 0 || $EUID == 0 ]]
+then
+	PS1=${PS1}'#'
+else
+	PS1=${PS1}'$'
+fi
+PS1=${PS1}'%b '
 
 # history
 HISTSIZE=1000
@@ -30,7 +37,7 @@ alias pubip='curl https://ipinfo.io/ip'
 alias ..='cd ..'
 alias ,,='cd -'
 alias se="sudo $VISUAL"
-alias copy="xclip -selection clipboard"
+alias xclip="xclip -selection clipboard"
 
 # package manager commands
 if [ -x "$(command -v xbps-install)" ]

@@ -21,9 +21,10 @@ Just run `make install` to install to your system. Remember to delete your old c
 - slock (with dpms patch)
 - st (with scrollback patch)
 - sxhkd
-- TeX
+- TeX Live
 - xbanish
 - xclip
 - xorg
 - zathura
 - zsh
+- zsh-syntax-highlighting
