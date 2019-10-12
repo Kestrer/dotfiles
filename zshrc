@@ -2,14 +2,7 @@
 
 # colors and prompt
 autoload -U colors && colors
-PS1="%B%{$fg[blue]%}%~%{$reset_color%}"
-if [[ $UID == 0 || $EUID == 0 ]]
-then
-	PS1=${PS1}'#'
-else
-	PS1=${PS1}'$'
-fi
-PS1=${PS1}'%b '
+PS1="%B%{$fg[blue]%}%~%{$reset_color%}%(!.#.$)%b "
 
 # history
 HISTSIZE=1000
@@ -21,23 +14,31 @@ setopt HIST_IGNORE_SPACE
 # enable spelling correction
 setopt correctall
 
-# color support
+# command variations
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias pcre2grep='pcre2grep --color=auto'
+alias xclip="xclip -selection clipboard"
+# "mkdir -c" mkdirs and cds
+function mkdir () {
+	case $1 in
+		(-c) command mkdir -p "$2" && cd "$2";;
+		 (*) command mkdir "$@";;
+	esac
+}
 
 # useful aliases
 alias ll='ls -aFlh'
 alias l='ls -aFlh'
 CFDIR=$(dirname $(readlink -f ${(%):-%N}))
 alias cf="cd $CFDIR; $VISUAL ."
-alias pubip='curl https://ipinfo.io/ip'
 alias ..='cd ..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
 alias ,,='cd -'
 alias se="sudo $VISUAL"
-alias xclip="xclip -selection clipboard"
 
 # package manager commands
 if [ -x "$(command -v xbps-install)" ]
@@ -64,24 +65,34 @@ fi
 # $ sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
+# get public IP address
+function pubip() {
+	curl 'https://ipinfo.io/ip'
+}
+
+# export aseprite
 function ase-export() {
 	aseprite -b --split-layers --all-layers aseprite/$1.aseprite --sheet $1.png > /dev/null
 }
 
+# convert tex to pdf
 function pretex() {
 	pdflatex -halt-on-error *.tex | grep '^!.*' -A200 --color=always
 	pdflatex -halt-on-error *.tex | grep '^!.*' -A200 --color=always
-	zathura *.pdf
+	$READER *.pdf
 }
 
+# display markdown
 function premd() {
 	pandoc $1 > /tmp/premd.html
 	$BROWSER /tmp/premd.html
 }
 
+# display manpage
 function wman () {
-	name="$(man -w $1)"
-	if [[ $name == *.gz ]]; then
+	name="$(man -w $1 | head -1)"
+	if [[ $name == *.gz ]]
+	then
 		page="$(zcat $name)"
 	else
 		page="$(cat $name)"
@@ -90,13 +101,7 @@ function wman () {
 	$BROWSER /tmp/manpage.html &
 }
 
-function mkdir () { # "mkdir -c" mkdirs and cds
-	case $1 in
-		(-c) command mkdir -p "$2" && cd "$2";;
-		 (*) command mkdir "$@";;
-	esac
-}
-
+# clear the screen completely
 function sclear () {
 	for ((i=1;i<=500;i++))
 	do
@@ -106,6 +111,7 @@ function sclear () {
 }
 
 function cmk () {
+	# hardlink so that git commits correctly
 	ln -f $CFDIR/c.mk Makefile
 
 	BASENAME=$(basename $(pwd))
@@ -141,7 +147,7 @@ zmodload zsh/complist
 compinit
 _comp_options+=(globdots)
 
-# vi
+# vi-like keybindings
 bindkey -v
 # allow deleting to work for stuff I have inputted previously
 bindkey -v '^H' backward-delete-char
@@ -154,13 +160,11 @@ export KEYTIMEOUT=1
 if [ $TERM = 'st-256color' ]
 then
 	function zle-keymap-select {
-		if [[ ${KEYMAP} == vicmd ]] ||
-			 [[ $1 = 'block' ]]; then
+		if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]
+		then
 			echo -ne '\e[1 q'
-		elif [[ ${KEYMAP} == main ]] ||
-			 [[ ${KEYMAP} == viins ]] ||
-			 [[ ${KEYMAP} = '' ]] ||
-			 [[ $1 = 'beam' ]]; then
+		elif [[ $KEYMAP == main ]] || [[ $KEYMAP == viins ]] || [[ $KEYMAP = '' ]] || [[ $1 = 'beam' ]]
+		then
 			echo -ne '\e[5 q'
 		fi
 	}
@@ -170,11 +174,17 @@ then
 		echo -ne "\e[5 q"
 	}
 	zle -N zle-line-init
-	echo -ne '\e[5 q' # Use beam shape cursor on startup.
-	preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
+	echo -ne '\e[5 q' # use beam shape cursor on startup.
+	# use beam shape cursor for each new prompt
+	preexec() {
+		echo -ne '\e[5 q';
+	}
 fi
 
 # ctrl+e to edit command in nvim
-autoload edit-command-line; zle -N edit-command-line
+autoload edit-command-line
+zle -N edit-command-line
 bindkey '^e' edit-command-line
+
+# syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
