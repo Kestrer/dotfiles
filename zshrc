@@ -44,7 +44,7 @@ alias se="sudo $VISUAL"
 if [ -x "$(command -v xbps-install)" ]
 then
 	alias pinstall="sudo xbps-install -S "
-	alias psearch="sudo xbps-query -Rs "
+	alias psearch="xbps-query -Rs "
 	alias pupdate="sudo xbps-install -Su"
 	alias premove="sudo xbps-remove -R "
 elif [ -x "$(command -v apt)" ]
@@ -130,7 +130,7 @@ function cmk () {
 		cat > config.mk <<- EOF
 		CC::=clang
 		CXX::=clang++
-		CFLAGS::=-Wall -Wextra -pedantic -Werror -g -Og
+		CFLAGS::=-Weverything -Werror -Wno-padded -Wno-disabled-macro-expansion -Wno-cast-qual -g -Og
 		CXXFLAGS::=-std=c++2a
 		LIBS::=
 		LDFLAGS::=-rdynamic -Wl,-rpath=/usr/local/lib -L/usr/local/lib
