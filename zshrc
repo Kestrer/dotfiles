@@ -44,7 +44,10 @@ alias se="sudo $VISUAL"
 if [ -x "$(command -v xbps-install)" ]
 then
 	alias pinstall="sudo xbps-install -S "
-	alias psearch="xbps-query -Rs "
+	alias plist="xbps-query -l"
+	alias psearch="xbps-query -s "
+	alias psearchg="xbps-query -Rs "
+	alias pinfo="xbps-query -R "
 	alias pupdate="sudo xbps-install -Su"
 	alias premove="sudo xbps-remove -R "
 elif [ -x "$(command -v apt)" ]

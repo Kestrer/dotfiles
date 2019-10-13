@@ -14,6 +14,10 @@ super+d
 super+equal
 	exec rofi -show calc -modi calc -no-show-match -no-sort
 
+# clipboard manager
+super+c
+	exec clipmenu
+
 # full screen screenshot
 Print
 	exec scrot ~/screenshots/screenshot_%Y-%m-%d-%H:%M:%S.png

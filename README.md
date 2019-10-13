@@ -4,6 +4,7 @@ Just run `make install` to install to your system. Remember to delete your old c
 
 ## Required Software:
 
+- clipmenu (+ xsel + clipnotify, without dmenu)
 - dbus
 - dunst
 - feh

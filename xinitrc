@@ -21,6 +21,9 @@ xbanish &
 # hotkeys
 sxhkd &
 
+# clipboard manager
+clipmenud &
+
 # monitor setup
 xrandr --output HDMI1 --primary --left-of DP1
 
