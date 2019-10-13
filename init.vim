@@ -15,16 +15,11 @@ set shiftwidth=4  " when reading, tabs are 4 spaces
 set noexpandtab
 
 " netrw
-" Press V to open file
-" P to open file in old window
-let g:netrw_browse_split = 0
-let g:netrw_winsize = 90
 let g:netrw_banner = 0
-let g:netrw_altv = 1
 let g:netrw_liststyle = 3
 let g:netrw_sort_sequence = ''
 let g:netrw_sort_options = 'i'
-set autochdir
+nnoremap <C-n> :Ex<Enter>
 
 " python is weird lol
 augroup python

@@ -91,24 +91,22 @@ function premd() {
 	$BROWSER /tmp/premd.html
 }
 
-# display manpage
+# fine: more useful find
+function fine() {
+	find . -mount -name $@ 2>/dev/null
+}
+
+# display manpage in web browser
 function wman () {
-	name="$(man -w $1 | head -1)"
-	if [[ $name == *.gz ]]
-	then
-		page="$(zcat $name)"
-	else
-		page="$(cat $name)"
-	fi
-	echo "$page" | groff -mandoc -Thtml > /tmp/manpage.html
-	$BROWSER /tmp/manpage.html &
+	man -cThtml $@ > /tmp/manpage.html
+	$BROWSER /tmp/manpage.html
 }
 
 # clear the screen completely
 function sclear () {
-	for ((i=1;i<=500;i++))
+	for ((i=0; i<200; i++))
 	do
-		echo ----------------
+		echo
 	done
 	clear
 }
