@@ -22,7 +22,7 @@ alias egrep='egrep --color=auto'
 alias pcre2grep='pcre2grep --color=auto'
 alias xclip="xclip -selection clipboard"
 # "mkdir -c" mkdirs and cds
-function mkdir () {
+function mkdir() {
 	case $1 in
 		(-c) command mkdir -p "$2" && cd "$2";;
 		 (*) command mkdir "$@";;
@@ -97,13 +97,13 @@ function fine() {
 }
 
 # display manpage in web browser
-function wman () {
+function wman() {
 	man -cThtml $@ > /tmp/manpage.html
 	$BROWSER /tmp/manpage.html
 }
 
 # clear the screen completely
-function sclear () {
+function sclear() {
 	for ((i=0; i<200; i++))
 	do
 		echo
@@ -111,7 +111,7 @@ function sclear () {
 	clear
 }
 
-function cmk () {
+function cmk() {
 	# hardlink so that git commits correctly
 	ln -f $CFDIR/c.mk Makefile
 
@@ -157,28 +157,37 @@ bindkey -v '^W' backward-kill-word
 bindkey -v '^U' kill-line
 export KEYTIMEOUT=1
 
-# change cursor shape for different vi modes; doesn't work on Linux console
+# st-exclusive stuff
 if [ $TERM = 'st-256color' ]
 then
-	function zle-keymap-select {
+	# change cursor shape for different vi modes
+
+	function zle-keymap-select() {
 		if [[ $KEYMAP == vicmd ]] || [[ $1 = 'block' ]]
 		then
-			echo -ne '\e[1 q'
+			echo -n "\e[1 q"
 		elif [[ $KEYMAP == main ]] || [[ $KEYMAP == viins ]] || [[ $KEYMAP = '' ]] || [[ $1 = 'beam' ]]
 		then
-			echo -ne '\e[5 q'
+			echo -n "\e[5 q"
 		fi
 	}
 	zle -N zle-keymap-select
-	zle-line-init() {
+	function zle-line-init() {
 		zle -K viins # initiate `vi insert` as keymap (can be removed if `bindkey -V` has been set elsewhere)
 		echo -ne "\e[5 q"
 	}
 	zle -N zle-line-init
-	echo -ne '\e[5 q' # use beam shape cursor on startup.
-	# use beam shape cursor for each new prompt
-	preexec() {
-		echo -ne '\e[5 q';
+	echo -n "\e[5 q" # use beam shape cursor on startup.
+	function preexec() {
+		# use beam shape cursor for each new prompt
+		echo -n "\e[5 q"
+
+		# set title
+		echo -n "\e]0;st: $1\a"
+	}
+	function precmd() {
+		# set terminal title
+		printf "\e]0;st: zsh: ${PWD##*/}\a"
 	}
 fi
 
