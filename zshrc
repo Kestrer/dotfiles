@@ -109,7 +109,7 @@ function sclear() {
 	do
 		echo
 	done
-	clear
+	echoti clear
 }
 
 function cmk() {
