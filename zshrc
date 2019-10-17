@@ -50,6 +50,7 @@ then
 	alias pinfo="xbps-query -R "
 	alias pupdate="sudo xbps-install -Su"
 	alias premove="sudo xbps-remove -R "
+	alias pclean="sudo xbps-remove -Oo"
 elif [ -x "$(command -v apt)" ]
 then
 	alias pinstall="sudo apt install "

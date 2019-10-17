@@ -2,6 +2,7 @@ all:
 
 install: all
 	mkdir -p \
+		${HOME}/.local/share \
 		${HOME}/.config/dunst \
 		${HOME}/.config/i3 \
 		${HOME}/.config/i3status \
@@ -13,6 +14,7 @@ install: all
 		${HOME}/.config/Xmodmap \
 		${HOME}/.config/zsh
 	
+	-ln -s ${PWD}/applications    ${HOME}/.local/share/applications
 	-ln -s ${PWD}/dunstrc         ${HOME}/.config/dunst/dunstrc
 	-ln -s ${PWD}/i3              ${HOME}/.config/i3/config
 	-ln -s ${PWD}/i3status        ${HOME}/.config/i3status/config
@@ -31,6 +33,7 @@ install: all
 
 uninstall:
 	rm -r \
+		${HOME}/.local/share/applications \
 		${HOME}/.config/dunst/dunstrc \
 		${HOME}/.config/i3/config \
 		${HOME}/.config/i3status/config \
