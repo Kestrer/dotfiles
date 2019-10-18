@@ -119,9 +119,7 @@ function cmk() {
 	BASENAME=$(basename $(pwd))
 	> .gitignore <<- EOF
 	.gitignore
-	objects
-	picobjects
-	deps
+	build
 	$BASENAME
 	lib$BASENAME.a
 	lib$BASENAME.so
