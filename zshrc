@@ -28,6 +28,9 @@ function mkdir() {
 		 (*) command mkdir "$@";;
 	esac
 }
+function man() {
+	mandoc $(find /usr/share/man /usr/local/share/man -regextype egrep -iregex "/usr(/local)?/share/man/man([0-9])/$1.\\2p?") | less
+}
 
 # useful aliases
 alias ll='ls -aFlh'

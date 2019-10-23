@@ -45,7 +45,6 @@ settings:
         <Ctrl+Tab>: null
         <Ctrl+^>: null
         <Ctrl+a>: null
-        <Ctrl+b>: home
         <Ctrl+h>: open qute://history
         <Ctrl+i>: inspector
         <Ctrl+n>: null
