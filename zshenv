@@ -1,20 +1,5 @@
 # environment variables
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ]; then
-	export PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ]; then
-	export PATH="$HOME/.local/bin:$PATH"
-fi
-
-# set PATH so it includes optional bin if it exists
-if [ -d "/opt/bin" ]; then
-	export PATH="/opt/bin:$PATH"
-fi
-
 # set XDG variables
 export XDG_DATA_HOME="$HOME/.local/share"
 export XDG_DATA_DIRS="/usr/local/share/:/usr/share/"
@@ -33,11 +18,16 @@ export SXHKD_SHELL='sh'
 export PAGER='less'
 
 # set dirs
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export HISTFILE="$XDG_DATA_HOME/bash/history"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
 export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
 export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export HISTFILE="$XDG_DATA_HOME/bash/history"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
+# path
+export PATH="$HOME/.local/bin:$CARGO_HOME/bin:/opt/bin:$PATH"

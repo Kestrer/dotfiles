@@ -1,6 +1,6 @@
-set nocompatible              " be iMproved
+set nocompatible " be iMproved
 
-syntax on "syntax highlighting
+syntax on
 set number
 set relativenumber
 set autoread
@@ -12,7 +12,7 @@ set smartindent   " smarter indent for C-like languages
 set tabstop=4     " tabs are 4 spaces
 set softtabstop=4
 set shiftwidth=4  " when reading, tabs are 4 spaces
-set noexpandtab
+set noexpandtab " T A B S
 
 " netrw
 let g:netrw_banner = 0
@@ -21,7 +21,7 @@ let g:netrw_sort_sequence = ''
 let g:netrw_sort_options = 'i'
 nnoremap <C-n> :Ex<Enter>
 
-" python is weird lol
+" tabs in python
 augroup python
 	autocmd!
 	autocmd FileType python setlocal noet ts=4
@@ -34,12 +34,6 @@ inoremap [<CR> [<CR>]<Esc>ko
 
 :command! W w
 :command! Q q
-
-" automatically reload init.vim
-augroup myvimrchooks
-    au!
-    autocmd bufwritepost ~/.config/nvim/init.vim source ~/.config/nvim/init.vim
-augroup END 
 
 set ruler
 

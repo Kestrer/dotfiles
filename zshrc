@@ -29,7 +29,13 @@ function mkdir() {
 	esac
 }
 function man() {
-	mandoc $(find /usr/share/man /usr/local/share/man -regextype egrep -iregex "/usr(/local)?/share/man/man([0-9])/$1.\\2p?") | less
+	MANPAGE="$(find /usr/share/man /usr/local/share/man -regextype egrep -iregex "/usr(/local)?/share/man/man([0-9])/$1.\\2p?")"
+	if [[ -z $MANPAGE ]]
+	then
+		echo No Manpage Found.
+		return
+	fi
+	mandoc $MANPAGE | less
 }
 
 # useful aliases
@@ -47,6 +53,7 @@ alias se="sudo $VISUAL"
 if [ -x "$(command -v xbps-install)" ]
 then
 	alias pinstall="sudo xbps-install -S "
+	alias preinstall="sudo xbps-install -Sf "
 	alias plist="xbps-query -l"
 	alias psearch="xbps-query -s "
 	alias psearchg="xbps-query -Rs "
