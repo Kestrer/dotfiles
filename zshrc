@@ -35,7 +35,7 @@ function man() {
 		echo No Manpage Found.
 		return
 	fi
-	mandoc $MANPAGE | less
+	mandoc "$MANPAGE" | less
 }
 
 # useful aliases

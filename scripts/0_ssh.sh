@@ -7,7 +7,7 @@ function startssh() {
 	ssh-add $HOME/.ssh/github_rsa
 }
 
-if [ -f "$OLDAGENT" ]
+if [ -f $OLDAGENT ]
 then
 	source "$OLDAGENT"
 	ps $SSH_AGENT_PID || startssh
