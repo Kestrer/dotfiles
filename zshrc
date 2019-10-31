@@ -207,3 +207,6 @@ bindkey '^e' edit-command-line
 
 # syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
+
+# ssh
+source $ZDOTDIR/scripts/0_ssh.sh
