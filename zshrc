@@ -11,9 +11,6 @@ HISTFILE=~/.cache/zsh/history
 HISTORY_IGNORE='fg'
 setopt HIST_IGNORE_SPACE
 
-# enable spelling correction
-setopt correctall
-
 # command variations
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
@@ -29,13 +26,13 @@ function mkdir() {
 	esac
 }
 function man() {
-	MANPAGE="$(find /usr/share/man /usr/local/share/man -regextype egrep -iregex "/usr(/local)?/share/man/man([0-9])/$1.\\2p?")"
-	if [[ -z $MANPAGE ]]
+	MANPAGES="$(find /usr/share/man /usr/local/share/man -regextype egrep -iregex "/usr(/local)?/share/man/man([0-9])/$1.\\2p?")"
+	if [[ -z "$MANPAGES" ]]
 	then
 		echo No Manpage Found.
 		return
 	fi
-	mandoc "$MANPAGE" | less
+	mandoc ${(f)MANPAGES} | less
 }
 
 # useful aliases
@@ -209,4 +206,4 @@ bindkey '^e' edit-command-line
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null
 
 # ssh
-source $ZDOTDIR/scripts/0_ssh.sh
+source $ZDOTDIR/scripts/0_ssh.sh > /dev/null
