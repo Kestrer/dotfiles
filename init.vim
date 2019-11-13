@@ -42,6 +42,10 @@ nmap Y y$
 " dd -> X now is the same as cc -> S
 nmap X dd
 
+" make ctrl+e and ctrl+y work in insert mode
+inoremap <C-e> <C-o><C-e>
+inoremap <C-y> <C-o><C-y>
+
 " solarized
 set termguicolors
 colorscheme NeoSolarized

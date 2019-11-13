@@ -15,7 +15,7 @@ super+equal
 	exec rofi -show calc -modi calc -no-show-match -no-sort
 
 # clipboard manager
-super+c
+super+x
 	exec clipmenu
 
 # full screen screenshot
