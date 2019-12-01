@@ -1,6 +1,6 @@
 # my dotfiles
 
-Just run `make install` to install to your system. Remember to delete your old configs first otherwise it won't install; to do this run `make uninstall`.
+Uses GNU Stow; to install, simply run `stow .`.
 
 ## Required Software:
 
@@ -20,7 +20,7 @@ Just run `make install` to install to your system. Remember to delete your old c
 - rofi-calc
 - scrot
 - slock (with dpms patch)
-- st (with scrollback patch)
+- st (with scrollback + solarized patch)
 - sxhkd
 - TeX Live
 - xbanish
@@ -41,34 +41,6 @@ Just run `make install` to install to your system. Remember to delete your old c
 	xbps-remove -F dmenu
 
 ### Extra Software
-
-#### SFML
-
-	xbps-install SFML-devel
-
-#### cJSON
-
-	xbps-install cJSON-devel
-
-#### Pcre2
-
-	xbps-install pcre2-devel
-
-#### X
-
-	xbps-install libX11-devel libXft-devel
-
-#### Curl
-
-	xbps-install libcurl-devel
-
-#### LibreOffice Writer
-
-	xbps-install libreoffice-writer libreoffice-i18n-en-GB
-
-#### Musescore
-
-	xbps-install musescore
 
 #### Minecraft
 
