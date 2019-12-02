@@ -21,6 +21,7 @@ export PAGER='less'
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export HISTFILE="$XDG_DATA_HOME/bash/history"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export MANPATH="${XDG_DATA_DIRS//:/man }man:$XDG_DATA_HOME/man"
 export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
 export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export WGETRC="$XDG_CONFIG_HOME/wgetrc"

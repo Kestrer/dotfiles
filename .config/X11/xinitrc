@@ -27,6 +27,9 @@ clipmenud &
 # monitor setup
 xrandr --output HDMI1 --primary --left-of DP1
 
+# disable DPMS
+xset dpms 0 0 0
+
 # set background image
 feh --no-fehbg --randomize --bg-fill ~/documents/wallpapers/*
 

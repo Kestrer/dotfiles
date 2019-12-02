@@ -27,7 +27,7 @@ function mkdir() {
 	esac
 }
 function man() {
-	MANPAGES="$(find /usr/share/man /usr/local/share/man -regextype egrep -iregex "/usr(/local)?/share/man/man([0-9])/$1.\\2p?")"
+	MANPAGES="$(find ${MANPATH//:/ } -regextype egrep -iregex "/usr(/local)?/share/man/man([0-9])/$1.\\2p?")"
 	if [[ -z "$MANPAGES" ]]
 	then
 		echo No Manpage Found.
@@ -39,7 +39,7 @@ function man() {
 # useful aliases
 alias ll='ls -aFlh'
 alias l='ls -aFlh'
-CFDIR=$(dirname $(readlink -f ${(%):-%N}))
+CFDIR=$(dirname $(dirname $(dirname $(readlink -f ${(%):-%N}))))
 alias cf="cd $CFDIR; $VISUAL ."
 alias ..='cd ..'
 alias ...='cd ../..'

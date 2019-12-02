@@ -5,4 +5,4 @@
 ^/LICENSE.*
 ^/COPYING
 
-/\.config/zsh/c\.mk
+^/c\.mk
