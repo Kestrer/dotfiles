@@ -27,7 +27,7 @@ function mkdir() {
 	esac
 }
 function man() {
-	MANPAGES="$(find ${MANPATH//:/ } -regextype egrep -iregex "/usr(/local)?/share/man/man([0-9])/$1.\\2p?")"
+	MANPAGES="$(find ${(s: :)MANPATH//:/ } -regextype egrep -iregex ".*man/man([0-9])/$1.\\1p?")"
 	if [[ -z "$MANPAGES" ]]
 	then
 		echo No Manpage Found.
@@ -79,7 +79,7 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # get public IP address
 function pubip() {
-	curl 'https://ipinfo.io/ip'
+	curl $@ 'https://ipinfo.io/ip'
 }
 
 # export aseprite

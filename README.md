@@ -47,6 +47,7 @@ make
 sudo make install
 ```
 - st (with scrollback + solarized patch)
+- stow
 - sxhkd
 - TeX Live
 - xbanish
