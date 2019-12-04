@@ -22,6 +22,11 @@ xbps-remove -F dmenu
 - i3wm
 - make
 - NeoSolarized
+```
+cd ~/.local/src
+git clone https://github.com/icymind/NeoSolarized
+ln -s ~/.local/src/NeoSolarized/colors/NeoSolarized.vim ~/.config/nvim/colors/
+```
 - neovim
 - notify-send
 - pcre2grep
@@ -47,6 +52,27 @@ make
 sudo make install
 ```
 - st (with scrollback + solarized patch)
+```
+cd ~/.local/src
+git clone https://git.suckless.org/st
+cd st
+curl https://st.suckless.org/patches/desktopentry/st-desktopentry-0.8.2.diff -o st-desktopentry-0.8.2.diff
+curl https://st.suckless.org/patches/newterm/st-newterm-0.8.2.diff -o st-newterm-0.8.2.diff
+curl https://st.suckless.org/patches/scrollback/st-scrollback-20190331-21367a0.diff -o st-scrollback-20190331-21367a0.diff
+git apply st-desktopenty-0.8.2.diff st-newterm-0.8.2.diff
+```
+The newterm and scrollback patches conflict with each other. To resolve this, edit `st-scrollback-20190331-21367a0.diff` and do the following:
+- Put ` 	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },` (line 189 of `config.def.h`) between lines 8 and 9 of the patch.
+- Put ` void newterm(const Arg *);` (line 84 of `st.h`) between lines 333 and 334 of the patch.
+```
+git apply st-scrollback-20190331-21367a0.diff
+rm config.mk
+```
+Once you've stow'd the files...
+```
+cd ~/.local/src/st
+make install
+```
 - stow
 - sxhkd
 - TeX Live
