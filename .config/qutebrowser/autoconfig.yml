@@ -158,6 +158,7 @@ settings:
         yY: null
         zc: download-clear
         zd: download-delete
+        zo: download-open
         zx: download-cancel
         zz: download
         '{{': null
