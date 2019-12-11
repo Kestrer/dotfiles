@@ -1,6 +1,6 @@
 # my dotfiles
 
-Uses GNU Stow; to install, simply run `stow .`, and to uninstall run `stow -D .`.
+Uses GNU Stow; to install, simply run `stow --no-folding .`, and to uninstall run `stow -D .`.
 
 ## Required Software:
 
