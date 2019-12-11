@@ -24,9 +24,6 @@ sxhkd &
 # clipboard manager
 clipmenud &
 
-# monitor setup
-xrandr --output HDMI1 --primary --left-of DP1
-
 # disable DPMS
 xset dpms 0 0 0
 
