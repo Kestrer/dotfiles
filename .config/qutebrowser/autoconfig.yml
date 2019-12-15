@@ -168,8 +168,7 @@ settings:
   content.geolocation:
     https://www.google.com: false
   content.headers.user_agent:
-    global: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like
-      Gecko) Chrome/74.0.3729.157 Safari/537.36
+    global: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0
   content.javascript.can_access_clipboard:
     global: true
   content.javascript.can_open_tabs_automatically:

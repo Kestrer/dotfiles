@@ -1,6 +1,6 @@
 # my dotfiles
 
-Uses GNU Stow; to install, simply run `stow --no-folding .`, and to uninstall run `stow -D .`.
+Uses GNU Stow; to install, simply run `stow --no-folding .` (make sure **not** to run `stow .` otherwise bad things will happen), and to uninstall run `stow -D .`.
 
 ## Required Software:
 
@@ -86,7 +86,7 @@ make install
 
 ## XBPS Command to install basic Void Linux system
 
-	xbps-install ConsoleKit2 ImageMagick acpid avahi base-files btrfs-progs clipmenu clipnotify colord colord-gtk coreutils cups cups-filters cups-pdf curl dash diffutils dosfstools dunst e2fsprogs eudev f2fs-tools feh file findutils font-awesome gawk git glibc-locales grep grub gtklp gzip i3 i3status iana-etc iceauth iproute2 iputils iw jack kbd kmod less libressl linux make man-pages-devel mdocml mpv ncurses neovim noto-fonts-emoji openssh pandoc pciutils pcre2 pkg-config pulseaudio qutebrowser rofi rofi-calc runit-void scron scrot sed sessreg shadow smproxy sudo stow sxhkd tar texlive-bin traceroute tzdata usbutils util-linux valgrind wget which wicd-gtk wifi-firmware xauth xbacklight xbanish xbps xclip xclipboard xcursorgen xdpyinfo xfsprogs xgamma xhost xinit xkbutils xmodmap xorg-fonts xorg-input-drivers xorg-server xorg-video-drivers xrandr xsel xset xxd youtube-dl zathura zathura-pdf-mupdf zsh zsh-syntax-highlighting
+	xbps-install ConsoleKit2 ImageMagick acpid avahi base-files btrfs-progs clipmenu clipnotify colord colord-gtk coreutils cups cups-filters cups-pdf curl dash diffutils dosfstools dunst e2fsprogs eudev f2fs-tools feh file findutils font-awesome gawk git glibc-locales grep grub gtklp gzip i3 i3status iana-etc iceauth iproute2 iputils iw jack kbd kmod less libressl linux make man-pages-devel mdocml mpv ncurses neovim noto-fonts-emoji openssh pciutils pcre2 pkg-config pulseaudio qutebrowser rofi rofi-calc runit-void scron scrot sed sessreg shadow smproxy sudo stow sxhkd tar texlive-bin traceroute tzdata usbutils util-linux valgrind wget which wicd-gtk wifi-firmware xauth xbacklight xbanish xbps xclip xclipboard xcursorgen xdpyinfo xfsprogs xgamma xhost xinit xkbutils xmodmap xorg-fonts xorg-input-drivers xorg-server xorg-video-drivers xrandr xsel xset xxd youtube-dl zathura zathura-pdf-mupdf zsh zsh-syntax-highlighting
 
 You also need to run `visudo` and add the line `Defaults env_keep += "HOME"` to make sudo not change the $HOME env variable.
 

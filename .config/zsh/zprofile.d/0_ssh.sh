@@ -9,8 +9,8 @@ function startssh() {
 
 if [ -f $OLDAGENT ]
 then
-	source "$OLDAGENT"
-	ps $SSH_AGENT_PID || startssh
+	source "$OLDAGENT" > /dev/null
+	ps $SSH_AGENT_PID > /dev/null || startssh
 else
 	startssh
 fi
