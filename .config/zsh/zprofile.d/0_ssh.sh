@@ -4,7 +4,7 @@ OLDAGENT="$HOME/.ssh/oldagent"
 function startssh() {
 	ssh-agent > $OLDAGENT
 	source $OLDAGENT
-	ssh-add $HOME/.ssh/github_rsa
+	ssh-add $HOME/.ssh/*_rsa
 }
 
 if [ -f $OLDAGENT ]

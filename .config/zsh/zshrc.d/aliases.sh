@@ -2,7 +2,7 @@
 
 alias ll='ls -aFlh'
 alias l='ls -aFlh'
-CFDIR=$(dirname $(dirname $(dirname $(readlink -f ${(%):-%N}))))
+CFDIR=$(dirname $(dirname $(dirname $(dirname $(readlink -f ${(%):-%N})))))
 alias cf="cd $CFDIR; $VISUAL ."
 alias ..='cd ..'
 alias ...='cd ../..'
@@ -58,7 +58,7 @@ function wman() {
 
 # clear the screen completely
 function sclear() {
-	for ((i=0; i<200; i++))
+	for ((i=0; i<500; i++))
 	do
 		echo
 	done
