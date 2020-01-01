@@ -87,8 +87,19 @@ function cmk() {
 		CXXFLAGS::=-std=c++2a -Wno-c++98-compat -Wno-c++11-compat -Wno-c++17-compat -Wno-global-constructors
 		LIBS::=
 		LDFLAGS::=-rdynamic -Wl,-rpath=/usr/local/lib -L/usr/local/lib
-
 		PREFIX::=/usr/local
 		EOF
 	fi
+}
+
+function qutehist() {
+	pushd ~/.local/share/qutebrowser
+
+	sqlite3 'history.sqlite' .dump > 'history.dump'
+	$VISUAL 'history.dump'
+	rm 'history.sqlite'
+	sqlite3 'history.sqlite' < 'history.dump'
+	rm 'history.dump'
+
+	popd
 }

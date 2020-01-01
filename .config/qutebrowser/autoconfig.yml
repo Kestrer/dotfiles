@@ -167,6 +167,8 @@ settings:
     global: false
   content.geolocation:
     https://www.google.com: false
+    https://www.samsung.com: false
+    https://www.southwesternrailway.com: true
   content.headers.user_agent:
     global: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0
   content.javascript.can_access_clipboard:
