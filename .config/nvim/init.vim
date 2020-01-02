@@ -66,3 +66,4 @@ autocmd FileType cpp inoremap #prag <Esc>:let @f = fileheader<Enter>i#pragma onc
 autocmd FileType html inoremap <// </<C-X><C-O>
 
 autocmd FileType markdown set colorcolumn=100
+autocmd FileType markdown set textwidth=100
