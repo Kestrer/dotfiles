@@ -22,12 +22,8 @@ super+x
 Print
 	exec scrot ~/screenshots/screenshot_%Y-%m-%d-%H:%M:%S.png
 
-# select area screenshot
-super+Print
-	exec scrot -s ~/screenshots/screenshot_%Y-%m-%d-%H:%M:%S.png
-
 # current window screenshot
-super+shift+Print
+super+Print
 	exec scrot -u ~/screenshots/screenshot_%Y-%m-%d-%H:%M:%S.png
 
 # lock
