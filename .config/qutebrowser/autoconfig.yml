@@ -176,6 +176,7 @@ settings:
   content.javascript.can_open_tabs_automatically:
     global: true
   content.notifications:
+    https://outlook.office365.com: true
     https://web.whatsapp.com: true
     https://www.reddit.com: false
   content.plugins:

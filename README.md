@@ -16,6 +16,7 @@ chmod 755 /usr/local/bin/dmenu
 xbps-remove -F dmenu
 ```
 - dbus
+- discount (markdown)
 - dunst
 - feh
 - fontawesome
@@ -31,6 +32,7 @@ ln -s ~/.local/src/NeoSolarized/colors/NeoSolarized.vim ~/.config/nvim/colors/
 - neovim
 - notify-send
 - pcre2grep
+- perl
 - qutebrowser
 - rofi
 - rofi-calc
@@ -76,6 +78,7 @@ make install
 ```
 - stow
 - sxhkd
+- wkhtmltopdf
 - TeX Live
 - xbanish
 - xclip

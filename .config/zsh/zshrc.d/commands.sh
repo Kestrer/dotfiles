@@ -103,3 +103,11 @@ function qutehist() {
 
 	popd
 }
+
+function md2html() {
+	markdown $1 | perl -0777 -pe 's/^<code>$(.*?)^<\/code>/<code><pre>$1<\/pre><\/code>/gms'
+}
+
+function md2pdf() {
+	md2html $1 | wkhtmltopdf -s A4 - -
+}

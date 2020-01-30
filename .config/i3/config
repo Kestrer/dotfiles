@@ -35,8 +35,6 @@ bindsym $mod+Shift+w floating toggle
 # split
 bindsym $mod+Shift+s split horizontal
 
-# screenshots
-
 # defalt workspace names
 set $ws0 "0"
 set $ws1 "1"
@@ -99,10 +97,15 @@ mode "resize" {
 	# Pressing up    will shrink the window’s height.
 	# Pressing down  will grow   the window’s height.
 	
-	bindsym h resize shrink width 10 px or 10 ppt  
-	bindsym j resize grow height 10 px or 10 ppt   
-	bindsym k resize shrink height 10 px or 10 ppt 
-	bindsym l resize grow width 10 px or 10 ppt    
+	bindsym h resize shrink width 10 px or 10 ppt
+	bindsym j resize grow height 10 px or 10 ppt
+	bindsym k resize shrink height 10 px or 10 ppt
+	bindsym l resize grow width 10 px or 10 ppt
+
+	bindsym Shift+h resize shrink width 1 px or 1 ppt
+	bindsym Shift+j resize grow height 1 px or 1 ppt
+	bindsym Shift+k resize shrink height 1 px or 1 ppt
+	bindsym Shift+l resize grow width 1 px or 1 ppt
 	
 	# back to normal: Enter or Escape or $mod+r
 	bindsym Return mode "default"
@@ -158,4 +161,3 @@ client.urgent           $red     $red     $base3   $base3    $red
 client.placeholder      $none    $violet  $base3   $none     $base00
 
 client.background $base03
-
