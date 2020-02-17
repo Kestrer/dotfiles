@@ -15,7 +15,8 @@ if [ -x "$(command -v xbps-install)" ]
 then
 	alias pinstall="sudo xbps-install -S "
 	alias preinstall="sudo xbps-install -Sf "
-	alias plist="xbps-query -l"
+	alias plist="xbps-query -m"
+	alias plistd="xbps-query -l"
 	alias psearch="xbps-query -s "
 	alias psearchg="xbps-query -Rs "
 	alias pinfo="xbps-query -R "
@@ -105,9 +106,15 @@ function qutehist() {
 }
 
 function md2html() {
-	markdown $1 | perl -0777 -pe 's/^<code>$(.*?)^<\/code>/<code><pre>$1<\/pre><\/code>/gms'
+	markdown -S $1 | perl -0777 -pe 's/^<code>$(.*?)^<\/code>/<code><pre>$1<\/pre><\/code>/gms'
 }
 
 function md2pdf() {
 	md2html $1 | wkhtmltopdf -s A4 - -
+}
+
+function rust-comp() {
+	set -o pipefail
+	sclear
+	cargo clippy --color=always 2>&1 | fold -w $(stty size | awk '{ print $2 }') | head -n $(( $(stty size | awk '{ print $1 }') - 1 ))
 }

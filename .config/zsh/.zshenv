@@ -35,4 +35,4 @@ export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
 export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # path
-export PATH="$HOME/.local/bin:$CARGO_HOME/bin:/opt/bin:$PATH"
+export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$XDG_DATA_HOME/npm/bin:/opt/bin:$PATH"

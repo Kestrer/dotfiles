@@ -1,6 +1,7 @@
 # my dotfiles
 
-Uses GNU Stow; to install, simply run `stow --no-folding .` (make sure **not** to run `stow .` otherwise bad things will happen), and to uninstall run `stow -D .`.
+Uses GNU Stow; to install, simply run `stow --no-folding .` (make sure **not** to run `stow .`
+otherwise bad things will happen), and to uninstall run `stow -D .`.
 
 ## Required Software:
 
@@ -23,6 +24,7 @@ xbps-remove -F dmenu
 - i3status
 - i3wm
 - make
+- ncurses-base
 - NeoSolarized
 ```
 cd ~/.local/src
@@ -36,6 +38,8 @@ ln -s ~/.local/src/NeoSolarized/colors/NeoSolarized.vim ~/.config/nvim/colors/
 - qutebrowser
 - rofi
 - rofi-calc
+- rust-analyzer (`cargo install --git https://github.com/rust-analyzer/rust-analyzer ra_lsp_server`)
+- rust-src (`rustup component add rust-src`)
 - scrot
 - slock (with dpms patch)
 ```
@@ -64,8 +68,10 @@ curl https://st.suckless.org/patches/newterm/st-newterm-0.8.2.diff -o st-newterm
 curl https://st.suckless.org/patches/scrollback/st-scrollback-20190331-21367a0.diff -o st-scrollback-20190331-21367a0.diff
 git apply st-desktopenty-0.8.2.diff st-newterm-0.8.2.diff
 ```
-The newterm and scrollback patches conflict with each other. To resolve this, edit `st-scrollback-20190331-21367a0.diff` and do the following:
-- Put ` 	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },` (line 189 of `config.def.h`) between lines 8 and 9 of the patch.
+The newterm and scrollback patches conflict with each other. To resolve this, edit
+`st-scrollback-20190331-21367a0.diff` and do the following:
+- Put ` 	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },` (line 189 of
+  `config.def.h`) between lines 8 and 9 of the patch.
 - Put ` void newterm(const Arg *);` (line 84 of `st.h`) between lines 333 and 334 of the patch.
 ```
 git apply st-scrollback-20190331-21367a0.diff
@@ -89,9 +95,10 @@ make install
 
 ## XBPS Command to install basic Void Linux system
 
-	xbps-install ConsoleKit2 ImageMagick acpid avahi base-files btrfs-progs clipmenu clipnotify colord colord-gtk coreutils cups cups-filters cups-pdf curl dash diffutils dosfstools dunst e2fsprogs eudev f2fs-tools feh file findutils font-awesome gawk git glibc-locales grep grub gtklp gzip i3 i3status iana-etc iceauth iproute2 iputils iw jack kbd kmod less libressl linux make man-pages-devel mdocml mpv ncurses neovim noto-fonts-emoji openssh pciutils pcre2 pkg-config pulseaudio qutebrowser rofi rofi-calc runit-void scron scrot sed sessreg shadow smproxy sudo stow sxhkd tar texlive-bin traceroute tzdata usbutils util-linux valgrind wget which wicd-gtk wifi-firmware xauth xbacklight xbanish xbps xclip xclipboard xcursorgen xdpyinfo xfsprogs xgamma xhost xinit xkbutils xmodmap xorg-fonts xorg-input-drivers xorg-server xorg-video-drivers xrandr xsel xset xxd youtube-dl zathura zathura-pdf-mupdf zsh zsh-syntax-highlighting
+	xbps-install GConf acpid alsa-utils avahi base-files btrfs-progs clipmenu clipnotify colord colord-gtk coreutils cups cups-filters cups-pdf curl dash dhcpcd diffutils discount dosfstools dunst e2fsprogs elogind ethtool eudev f2fs-tools feh file findutils font-awesome fontconfig-devel gawk gcc git glibc-locales grep gtklp gzip i3 i3status iana-etc iceauth iproute2 iputils iw jack kbd kmod less libX11-devel libXft-devel libXrandr-devel libatomic libgcc libressl linux make man-pages man-pages-devel mdocml mpv ncurses-base neofetch neovim noto-fonts-emoji openssh pciutils pcre2 pkg-config procps-ng psmisc python-neovim python3-neovim qt5-graphicaleffects qutebrowser rofi rofi-calc runit-void rustup sane scron scrot sed sessreg shadow smproxy stow sudo sxhkd tar traceroute tzdata unzip usbutils util-linux void-repo-nonfree wget which wicd wicd-gtk wifi-firmware wkhtmltopdf wpa_supplicant xauth xbacklight xbanish xbps xclip xclipboard xcursorgen xdpyinfo xev xfsprogs xgamma xhost xinit xkbutils xmodmap xorg-fonts xorg-input-drivers xorg-server xorg-video-drivers xrandr xsane xsel xset xxd zathura zathura-pdf-mupdf zsh zsh-syntax-highlighting
 
-You also need to run `visudo` and add the line `Defaults env_keep += "HOME"` to make sudo not change the $HOME env variable.
+You also need to run `visudo` and add the line `Defaults env_keep += "HOME"` to make sudo not change
+the $HOME env variable.
 
 ## Extra Software
 
