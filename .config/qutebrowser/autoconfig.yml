@@ -169,6 +169,8 @@ settings:
     https://www.google.com: false
     https://www.samsung.com: false
     https://www.southwesternrailway.com: true
+  content.headers.do_not_track:
+    global: false
   content.headers.user_agent:
     global: Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:70.0) Gecko/20100101 Firefox/70.0
   content.javascript.can_access_clipboard:
@@ -201,7 +203,7 @@ settings:
     - nvim
     - '{file}'
   fonts.statusbar:
-    global: 10pt monospace
+    global: 10pt default_family
   statusbar.position:
     global: top
   statusbar.widgets:

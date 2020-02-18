@@ -24,7 +24,7 @@ xbps-remove -F dmenu
 - i3status
 - i3wm
 - make
-- ncurses-base
+- ncurses
 - NeoSolarized
 ```
 cd ~/.local/src
@@ -58,7 +58,7 @@ cd ~/.local/src/slock
 make
 sudo make install
 ```
-- st (with scrollback + solarized patch)
+- st (with desktopentry + newterm + scrollback + solarized + fix keyboard input patches)
 ```
 cd ~/.local/src
 git clone https://git.suckless.org/st
@@ -95,7 +95,7 @@ make install
 
 ## XBPS Command to install basic Void Linux system
 
-	xbps-install GConf acpid alsa-utils avahi base-files btrfs-progs clipmenu clipnotify colord colord-gtk coreutils cups cups-filters cups-pdf curl dash dhcpcd diffutils discount dosfstools dunst e2fsprogs elogind ethtool eudev f2fs-tools feh file findutils font-awesome fontconfig-devel gawk gcc git glibc-locales grep gtklp gzip i3 i3status iana-etc iceauth iproute2 iputils iw jack kbd kmod less libX11-devel libXft-devel libXrandr-devel libatomic libgcc libressl linux make man-pages man-pages-devel mdocml mpv ncurses-base neofetch neovim noto-fonts-emoji openssh pciutils pcre2 pkg-config procps-ng psmisc python-neovim python3-neovim qt5-graphicaleffects qutebrowser rofi rofi-calc runit-void rustup sane scron scrot sed sessreg shadow smproxy stow sudo sxhkd tar traceroute tzdata unzip usbutils util-linux void-repo-nonfree wget which wicd wicd-gtk wifi-firmware wkhtmltopdf wpa_supplicant xauth xbacklight xbanish xbps xclip xclipboard xcursorgen xdpyinfo xev xfsprogs xgamma xhost xinit xkbutils xmodmap xorg-fonts xorg-input-drivers xorg-server xorg-video-drivers xrandr xsane xsel xset xxd zathura zathura-pdf-mupdf zsh zsh-syntax-highlighting
+	xbps-install GConf acpid alsa-utils avahi base-files btrfs-progs clipmenu clipnotify colord colord-gtk coreutils cups cups-filters cups-pdf curl dash dhcpcd diffutils discount dosfstools dunst e2fsprogs elogind ethtool eudev f2fs-tools feh file findutils font-awesome fontconfig-devel gawk gcc git glibc-locales grep gtklp gzip i3 i3status iana-etc iceauth iproute2 iputils iw jack kbd kmod less libX11-devel libXft-devel libXrandr-devel libatomic libgcc libressl linux make man-pages man-pages-devel mdocml mpv ncurses neofetch neovim noto-fonts-emoji openssh pciutils pcre2 pkg-config procps-ng psmisc python-neovim python3-neovim qt5-graphicaleffects qutebrowser rofi rofi-calc runit-void rustup sane scron scrot sed sessreg shadow smproxy stow sudo sxhkd tar traceroute tzdata unzip usbutils util-linux void-repo-nonfree wget which wicd wicd-gtk wifi-firmware wkhtmltopdf wpa_supplicant xauth xbacklight xbanish xbps xclip xclipboard xcursorgen xdpyinfo xev xfsprogs xgamma xhost xinit xkbutils xmodmap xorg-fonts xorg-input-drivers xorg-server xorg-video-drivers xrandr xsane xsel xset xxd zathura zathura-pdf-mupdf zsh zsh-syntax-highlighting
 
 You also need to run `visudo` and add the line `Defaults env_keep += "HOME"` to make sudo not change
 the $HOME env variable.
