@@ -16,6 +16,8 @@ set noexpandtab " T A B S
 set signcolumn=yes " always show left column
 set updatetime=300 " make fast
 set ruler " stuff in bottom right
+set colorcolumn=100
+set textwidth=100
 
 " netrw
 let g:netrw_banner = 0
@@ -45,11 +47,11 @@ inoremap <C-y> <C-o><C-y>
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
+	if (index(['vim','help'], &filetype) >= 0)
+		execute 'h '.expand('<cword>')
+	else
+		call CocAction('doHover')
+	endif
 endfunction
 
 " solarized
@@ -71,33 +73,38 @@ autocmd FileType cpp inoremap #prag <Esc>:let @f = fileheader<Enter>i#pragma onc
 " type <// while in HTML to autocomplete
 autocmd FileType html inoremap <// </<C-X><C-O>
 
-autocmd FileType markdown set colorcolumn=100
-autocmd FileType markdown set textwidth=100
+function CocConfig()
+	call plug#begin()
+	Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	call plug#end()
 
-" Plugins
-call plug#begin()
-" coc
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-call plug#end()
-
-" Use tab for trigger completion with characters ahead and navigate.
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
+	" Use tab for trigger completion with characters ahead and navigate.
+	inoremap <silent><expr> <TAB>
+		\ pumvisible() ? "\<C-n>" :
+		\ <SID>check_back_space() ? "\<TAB>" :
+		\ coc#refresh()
+	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+	
+	function! s:check_back_space() abort
+		let col = col('.') - 1
+		return !col || getline('.')[col - 1]  =~# '\s'
+	endfunction
+	
+	" <cr> comfirms completion
+	inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+	
+	" rename
+	nmap <leader>rn <Plug>(coc-rename)
+	
+	" navigate diagnostics
+	nmap <silent> [g <Plug>(coc-diagnostic-prev)
+	nmap <silent> ]g <Plug>(coc-diagnostic-next)
 endfunction
+autocmd FileType rust call CocConfig()
 
-" <cr> comfirms completion
-inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-
-" rename
-nmap <leader>rn <Plug>(coc-rename)
-
-" navigate diagnostics
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" tabs
+nnoremap <M-CR> :tab split<CR>
+nnoremap <M-H> :tabmove -1<CR>
+nnoremap <M-L> :tabmove +1<CR>
+nnoremap <M-l> :tabnext<CR>
+nnoremap <M-h> :tabprevious<CR>

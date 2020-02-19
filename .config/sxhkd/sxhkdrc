@@ -29,3 +29,7 @@ super+Print
 # lock
 super+s
 	exec slock
+
+# password manager
+super+b
+	bwmenu
