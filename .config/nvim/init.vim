@@ -43,17 +43,6 @@ nmap X dd
 inoremap <C-e> <C-o><C-e>
 inoremap <C-y> <C-o><C-y>
 
-" K shows documentation
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-	if (index(['vim','help'], &filetype) >= 0)
-		execute 'h '.expand('<cword>')
-	else
-		call CocAction('doHover')
-	endif
-endfunction
-
 " solarized
 set termguicolors
 colorscheme NeoSolarized
@@ -87,7 +76,7 @@ function CocConfig()
 	
 	function! s:check_back_space() abort
 		let col = col('.') - 1
-		return !col || getline('.')[col - 1]  =~# '\s'
+		return !col || getline('.')[col - 1]	=~# '\s'
 	endfunction
 	
 	" <cr> comfirms completion
@@ -99,6 +88,17 @@ function CocConfig()
 	" navigate diagnostics
 	nmap <silent> [g <Plug>(coc-diagnostic-prev)
 	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+	" K shows documentation
+	nnoremap <silent> K :call <SID>show_documentation()<CR>
+	
+	function! s:show_documentation()
+		if (index(['vim','help'], &filetype) >= 0)
+			execute 'h '.expand('<cword>')
+		else
+			call CocAction('doHover')
+		endif
+	endfunction
 endfunction
 autocmd FileType rust call CocConfig()
 
@@ -108,3 +108,48 @@ nnoremap <M-H> :tabmove -1<CR>
 nnoremap <M-L> :tabmove +1<CR>
 nnoremap <M-l> :tabnext<CR>
 nnoremap <M-h> :tabprevious<CR>
+
+set tabline=%!MyTabLine()
+function GetTabText(tab)
+	let tabtext = ''
+
+	let buf = tabpagebuflist(a:tab + 1)[tabpagewinnr(a:tab + 1) - 1]
+
+	let tabtext .= bufname(buf)
+
+	if getbufvar(buf, "&buftype") == 'help'
+		let tabtext = fnamemodify(tabtext, ':t') . ' [Help]'
+	else
+		let tabtext .= ' '
+	endif
+
+	if getbufvar(buf, "&readonly")
+		let tabtext .= '[RO]'
+	endif
+
+	if getbufvar(buf, "&modified")
+		let tabtext .= '[+]'
+	endif
+
+	if tabtext == ''
+		let tabtext = '[No Name]'
+	endif
+
+	return tabtext
+endfunction
+
+function MyTabLine()
+	let tabline = '' " complete tabline goes here
+	" loop through each tab page
+	for tab in range(tabpagenr('$'))
+		" highlight tab if current
+		let tabline .= '%#TabLine'
+		if tab + 1 == tabpagenr()
+			let tabline .= 'Sel'
+		endif
+		let tabline .= '# ' . GetTabText(tab) . ' '
+	endfor
+	" after the last tab fill with TabLineFill and reset tab page nr
+	let tabline .= '%#TabLineFill#%T'
+	return tabline
+endfunction
