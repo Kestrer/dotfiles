@@ -20,7 +20,7 @@ then
 	alias psearch="xbps-query -s "
 	alias psearchg="xbps-query -Rs "
 	alias pinfo="xbps-query -R "
-	alias pupdate="sudo xbps-install -Su"
+	alias pupdate="sudo xbps-install -u xbps; sudo xbps-install -Su"
 	alias premove="sudo xbps-remove -R "
 	alias pclean="sudo xbps-remove -Oo"
 fi
@@ -113,8 +113,19 @@ function md2pdf() {
 	md2html $1 | wkhtmltopdf -s A4 - -
 }
 
-function rust-comp() {
+function firstpage() {
 	set -o pipefail
+	args="--color=always"
+	case $1 in
+		"-h")
+			echo "Prints the first page of a command's output."
+			echo "Use -c to avoid appending --color=always to the command."
+			exit 0;;
+		"-c")
+			args=;;
+	esac
 	sclear
-	cargo clippy --color=always 2>&1 | fold -w $(stty size | awk '{ print $2 }') | head -n $(( $(stty size | awk '{ print $1 }') - 1 ))
+	$* $args 2>&1 |
+		fold -w $(stty size | awk '{ print $2 }') |
+		head -n $(( $(stty size | awk '{ print $1 }') - 1 ))
 }

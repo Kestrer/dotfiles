@@ -1,9 +1,8 @@
-set nocompatible " be iMproved
-
 syntax on
+set nocompatible " be iMproved
 set number " numbered lines
 set relativenumber " relative to cursor
-set autoread " automatically read filetype
+set autoread " automatically read if file has changed
 set encoding=utf-8 " best encoding
 set fileencoding=utf-8
 set backspace=indent,eol,start " make backspace work
@@ -54,19 +53,17 @@ let g:neosolarized_italic = 1
 set background=dark
 
 " type #prag in C to get automatic header guards
-autocmd FileType c let fileheader = substitute(substitute(fnamemodify(expand("%"), ":~:."), "/", "_", "g"), "\\.", "_", "g")
-autocmd FileType cpp let fileheader = substitute(substitute(fnamemodify(expand("%"), ":~:."), "/", "_", "g"), "\\.", "_", "g")
-autocmd FileType c inoremap #prag <Esc>:let @f = fileheader<Enter>i#pragma once<Enter>#ifndef <Esc>"fpa<Enter>#define <Esc>"fpa<Enter><Enter><Enter><Enter>#endif<Esc>kki
-autocmd FileType cpp inoremap #prag <Esc>:let @f = fileheader<Enter>i#pragma once<Enter>#ifndef <Esc>"fpa<Enter>#define <Esc>"fpa<Enter><Enter><Enter><Enter>#endif<Esc>kki
+autocmd FileType c,cpp let fileheader = substitute(substitute(fnamemodify(expand("%"), ":~:."), "/", "_", "g"), "\\.", "_", "g")
+autocmd FileType c,cpp inoremap #prag <Esc>:let @f = fileheader<Enter>i#pragma once<Enter>#ifndef <Esc>"fpa<Enter>#define <Esc>"fpa<Enter><Enter><Enter><Enter>#endif<Esc>kki
 
 " type <// while in HTML to autocomplete
 autocmd FileType html inoremap <// </<C-X><C-O>
 
-function CocConfig()
-	call plug#begin()
-	Plug 'neoclide/coc.nvim', {'branch': 'release'}
-	call plug#end()
+call plug#begin()
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+call plug#end()
 
+function ConfigureCoc()
 	" Use tab for trigger completion with characters ahead and navigate.
 	inoremap <silent><expr> <TAB>
 		\ pumvisible() ? "\<C-n>" :
@@ -76,7 +73,7 @@ function CocConfig()
 	
 	function! s:check_back_space() abort
 		let col = col('.') - 1
-		return !col || getline('.')[col - 1]	=~# '\s'
+		return !col || getline('.')[col - 1] =~# '\s'
 	endfunction
 	
 	" <cr> comfirms completion
@@ -91,7 +88,7 @@ function CocConfig()
 
 	" K shows documentation
 	nnoremap <silent> K :call <SID>show_documentation()<CR>
-	
+
 	function! s:show_documentation()
 		if (index(['vim','help'], &filetype) >= 0)
 			execute 'h '.expand('<cword>')
@@ -100,14 +97,19 @@ function CocConfig()
 		endif
 	endfunction
 endfunction
-autocmd FileType rust call CocConfig()
+autocmd FileType rust call ConfigureCoc()
 
 " tabs
-nnoremap <M-CR> :tab split<CR>
-nnoremap <M-H> :tabmove -1<CR>
-nnoremap <M-L> :tabmove +1<CR>
-nnoremap <M-l> :tabnext<CR>
-nnoremap <M-h> :tabprevious<CR>
+nnoremap <silent> <M-CR> :tab split<CR>
+nnoremap <silent> <M-H> :tabmove -1<CR>
+nnoremap <silent> <M-L> :tabmove +1<CR>
+nnoremap <silent> <M-l> :tabnext<CR>
+nnoremap <silent> <M-h> :tabprevious<CR>
+inoremap <silent> <M-CR> <C-o>:tab split<CR>
+inoremap <silent> <M-H> <C-o>:tabmove -1<CR>
+inoremap <silent> <M-L> <C-o>:tabmove +1<CR>
+inoremap <silent> <M-l> <C-o>:tabnext<CR>
+inoremap <silent> <M-h> <C-o>:tabprevious<CR>
 
 set tabline=%!MyTabLine()
 function GetTabText(tab)

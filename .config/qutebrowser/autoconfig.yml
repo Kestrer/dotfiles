@@ -180,6 +180,7 @@ settings:
   content.notifications:
     https://mail.google.com: true
     https://outlook.office365.com: true
+    https://users.rust-lang.org: true
     https://web.whatsapp.com: true
     https://www.reddit.com: false
   content.plugins:
