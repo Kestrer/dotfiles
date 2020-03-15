@@ -115,17 +115,22 @@ function md2pdf() {
 
 function firstpage() {
 	set -o pipefail
-	args="--color=always"
-	case $1 in
-		"-h")
+	case $# in
+		0)
 			echo "Prints the first page of a command's output."
-			echo "Use -c to avoid appending --color=always to the command."
-			exit 0;;
-		"-c")
-			args=;;
+			return;;
 	esac
 	sclear
-	$* $args 2>&1 |
-		fold -w $(stty size | awk '{ print $2 }') |
+	$* 2>&1 |
+		fnew -w "$(stty size | awk ' { print $2 }')" |
 		head -n $(( $(stty size | awk '{ print $1 }') - 1 ))
+}
+
+function firstpagec() {
+	case $# in
+		0)
+			echo "Like firstpage, but appends --color=always to the command."
+			return;;
+	esac
+	firstpage $* --color=always
 }

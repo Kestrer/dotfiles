@@ -21,6 +21,7 @@ xbps-remove -F dmenu
 - dunst
 - feh
 - fontawesome
+- fnew (`cargo install fnew`)
 - i3status
 - i3wm
 - make
@@ -40,6 +41,7 @@ ln -s ~/.local/src/NeoSolarized/colors/NeoSolarized.vim ~/.config/nvim/colors/
 - rofi-calc
 - rust-analyzer (`cargo install --git https://github.com/rust-analyzer/rust-analyzer ra_lsp_server`)
 - rust-src (`rustup component add rust-src`)
+- rustup
 - scrot
 - slock (with dpms patch)
 ```
