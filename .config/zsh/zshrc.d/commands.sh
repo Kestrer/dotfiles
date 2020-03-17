@@ -121,7 +121,7 @@ function firstpage() {
 			return;;
 	esac
 	sclear
-	$* 2>&1 |
+	$SHELL -c "$*" 2>&1 |
 		fnew -w "$(stty size | awk ' { print $2 }')" |
 		head -n $(( $(stty size | awk '{ print $1 }') - 1 ))
 }
