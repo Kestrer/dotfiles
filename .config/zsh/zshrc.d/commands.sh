@@ -20,7 +20,7 @@ then
 	alias psearch="xbps-query -s "
 	alias psearchg="xbps-query -Rs "
 	alias pinfo="xbps-query -R "
-	alias pupdate="sudo xbps-install -u xbps; sudo xbps-install -Su"
+	alias pupdate="sudo xbps-install -Su xbps; sudo xbps-install -u"
 	alias premove="sudo xbps-remove -R "
 	alias pclean="sudo xbps-remove -Oo"
 fi
