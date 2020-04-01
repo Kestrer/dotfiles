@@ -66,5 +66,9 @@ autoload edit-command-line
 zle -N edit-command-line
 bindkey '^e' edit-command-line
 
+# make shift+space and alt+space _not_ clear the line
+bindkey -s "^[[32;2u" " "
+bindkey -s "^[[32;3u" " "
+
 # syntax highlighting
 source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh 2>/dev/null

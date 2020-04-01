@@ -6,6 +6,7 @@ export XDG_DATA_DIRS="/usr/local/share/:/usr/share/"
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CONFIG_DIRS="/etc/xdg"
 export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DOWNLOAD_DIR="/tmp/downloads"
 
 # set software
 export VISUAL='nvim'
@@ -36,3 +37,7 @@ export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # path
 export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$XDG_DATA_HOME/npm/bin:/opt/bin:$PATH"
+export CPATH="/usr/lib/R/include/"
+export C_INCLUDE_PATH="$CPATH"
+export CPLUS_INCLUDE_PATH="$CPATH"
+export GCC_INCLUDE_DIR="$CPATH"
