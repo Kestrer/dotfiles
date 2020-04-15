@@ -43,6 +43,9 @@ nmap X dd
 inoremap <C-e> <C-o><C-e>
 inoremap <C-y> <C-o><C-y>
 
+" prevent accidental pressing of ctrl-space
+inoremap <C-Space> <space>
+
 " solarized
 set termguicolors
 colorscheme NeoSolarized

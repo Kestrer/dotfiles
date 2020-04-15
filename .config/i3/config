@@ -150,6 +150,7 @@ bar {
 	}
 	i3bar_command exec i3bar
 	status_command exec i3status
+	font pango:monospace 8
 	position top
 }
 

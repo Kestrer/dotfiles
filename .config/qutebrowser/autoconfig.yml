@@ -45,12 +45,16 @@ settings:
         <Ctrl+Tab>: null
         <Ctrl+^>: null
         <Ctrl+a>: null
+        <Ctrl+b>: scroll page-up
+        <Ctrl+d>: repeat 13 scroll down
+        <Ctrl+f>: scroll page-down
         <Ctrl+h>: open qute://history
         <Ctrl+i>: inspector
         <Ctrl+n>: null
         <Ctrl+q>: null
         <Ctrl+s>: view-source -e
         <Ctrl+t>: null
+        <Ctrl+u>: repeat 13 scroll up
         <Ctrl+w>: null
         <Ctrl+x>: null
         <Escape>: search ;; fullscreen --leave ;; jseval -q document.activeElement.blur()
@@ -60,6 +64,7 @@ settings:
         B: null
         D: null
         F: null
+        G: scroll bottom
         K: null
         M: null
         O: null
@@ -85,7 +90,7 @@ settings:
         fh: hint all hover
         fw: hint all window
         fy: hint links yank
-        g: scroll-to-perc 0
+        g: scroll top
         g$: null
         g0: null
         gB: null

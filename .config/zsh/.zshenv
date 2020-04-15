@@ -8,6 +8,24 @@ export XDG_CONFIG_DIRS="/etc/xdg"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DOWNLOAD_DIR="/tmp/downloads"
 
+
+# set dirs
+export CARGO_HOME="$XDG_DATA_HOME/cargo"
+export HISTFILE="$XDG_DATA_HOME/bash/history"
+export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
+export MANPATH="$XDG_DATA_HOME/man:${XDG_DATA_DIRS//:/man:}man"
+export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
+export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
+export PYTHONSTARTUP="$XDG_CONFIG_HOME/startup.py"
+export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
+export TERMINFO="$XDG_DATA_HOME/terminfo"
+export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
+export WGETRC="$XDG_CONFIG_HOME/wgetrc"
+export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
+export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
+export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
+export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
+
 # set software
 export VISUAL='nvim'
 export EDITOR="$VISUAL"
@@ -17,23 +35,6 @@ export READER='zathura'
 export SHELL='zsh'
 export SXHKD_SHELL='sh'
 export PAGER='less'
-
-# set dirs
-export CARGO_HOME="$XDG_DATA_HOME/cargo"
-export HISTFILE="$XDG_DATA_HOME/bash/history"
-export LESSHISTFILE="$XDG_CACHE_HOME/less/history"
-export MANPATH="$XDG_DATA_HOME/man:${XDG_DATA_DIRS//:/man:}man"
-export NODE_REPL_HISTORY="$XDG_DATA_HOME/node_repl_history"
-export NPM_CONFIG_USERCONFIG="$XDG_CONFIG_HOME/npm/npmrc"
-export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
-export TERMINFO="$XDG_DATA_HOME/terminfo"
-export TERMINFO_DIRS="$TERMINFO:/usr/share/terminfo"
-
-export WGETRC="$XDG_CONFIG_HOME/wgetrc"
-export XAUTHORITY="$XDG_RUNTIME_DIR/Xauthority"
-export XINITRC="$XDG_CONFIG_HOME/X11/xinitrc"
-export XSERVERRC="$XDG_CONFIG_HOME/X11/xserverrc"
-export ZDOTDIR="$XDG_CONFIG_HOME/zsh"
 
 # path
 export PATH="$HOME/.local/bin:$CARGO_HOME/bin:$XDG_DATA_HOME/npm/bin:/opt/bin:$PATH"
