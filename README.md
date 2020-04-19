@@ -104,6 +104,30 @@ make install
 You also need to run `visudo` and add the line `Defaults env_keep += "HOME"` to make sudo not change
 the $HOME env variable.
 
+## Scripts service
+
+This `scripts` service makes the `/tmp/downloads` directory on boot.
+
+```
+cd /etc/sv
+mkdir scripts
+cd scripts
+> run << EOF
+#!/bin/sh
+set -e
+
+rm -rf /tmp/downloads
+mkdir /tmp/downloads
+chmod 777 /tmp/downloads
+chmod +t /tmp/downloads
+
+exec chpst -b scripts pause
+EOF
+chmod +x run
+cd /var/service
+ln -s /etc/sv/scripts .
+```
+
 ## Extra Software
 
 ### Minecraft
@@ -111,8 +135,7 @@ the $HOME env variable.
 ```
 pinstall openjdk-jre GConf
 cd /opt
-curl https://launcher.mojang.com/download/Minecraft.tar.gz -o Minecraft.tar.gz
-tar xvzf Minecraft.tar.gz
+curl https://launcher.mojang.com/download/Minecraft.tar.gz | tar xvzf -
 mkdir -p bin
 ln -s minecraft-launcher/minecraft-launcher bin/minecraft
 ```

@@ -137,6 +137,6 @@ function firstpagec() {
 
 # compiles the current rust crate
 function rustcomp() {
-	CRATE="$(cargo metadata --no-deps --format-version=1 | jq -r '[.packages[].name] | join(" ")')"
-	firstpagec "cargo clean -p $CRATE && cargo clippy --all-targets"
+	CRATE="$(cargo metadata --no-deps --format-version=1 | jq -r '["-p\n" + .packages[].name] | join("\n")')"
+	firstpagec "cargo clean ${(f)CRATE} && cargo clippy --all-targets"
 }
