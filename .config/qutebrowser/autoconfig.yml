@@ -185,6 +185,7 @@ settings:
   content.javascript.enabled:
     global: true
   content.notifications:
+    https://internals.rust-lang.org: true
     https://mail.google.com: true
     https://meet.google.com: true
     https://metro.co.uk: false
