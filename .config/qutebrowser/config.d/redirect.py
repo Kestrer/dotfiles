@@ -1,16 +1,15 @@
-import operator, re, typing
-from urllib.parse import urljoin
+import re
 
 from qutebrowser.api import interceptor, message
 from PyQt5.QtCore import QUrl
 
 REDIRECT_REGEXES = [
     (
-        r"^https://doc\.rust-lang\.org(?:/stable|/beta|/nightly|)/(?:std|alloc|core)",
+        r"^https://doc\.rust-lang\.org(?!/stable/std)(?:/stable|/beta|/nightly|)/(?:std|alloc|core)",
         r"https://doc.rust-lang.org/stable/std",
     ),
     (
-        r"^https://docs\.rs/serde/(?:[^/]+)/",
+        r"^https://docs\.rs/(erased_serde|serde|serde_bytes|serde_derive|serde_json|serde_test|serde_transcode|serde_yaml)/(?:[^/]+)/",
         r"https://docs.serde.rs/",
     ),
     (

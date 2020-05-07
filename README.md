@@ -41,8 +41,7 @@ ln -s ~/.local/src/NeoSolarized/colors/NeoSolarized.vim ~/.config/nvim/colors/
 - qutebrowser
 - rofi
 - rofi-calc
-- rust-analyzer (`cargo install --git https://github.com/rust-analyzer/rust-analyzer ra_lsp_server`)
-- rust-src (`rustup component add rust-src`)
+- rust-analyzer (`cargo install --git https://github.com/rust-analyzer/rust-analyzer rust-analyzer`)
 - rustup
 - scrot
 - slock (with dpms patch)
@@ -50,11 +49,12 @@ ln -s ~/.local/src/NeoSolarized/colors/NeoSolarized.vim ~/.config/nvim/colors/
 cd ~/.local/src
 git clone https://git.suckless.org/slock
 cd slock
-curl https://tools.suckless.org/slock/patches/dpms/slock-dpms-1.4.diff -o slock-dpms-1.4.diff
+curl -O https://tools.suckless.org/slock/patches/dpms/slock-dpms-1.4.diff
 git apply slock-dpms-1.4.diff
 rm config.mk
 ```
-Then edit `slock.c` and remove lines 386 and 387. For some reason, the dpms patch doesn't like it when you have 0 0 0 dpms timeouts, so I removed that feature lol.
+Then edit `slock.c` and remove lines 386 and 387. For some reason, the dpms patch doesn't like it
+when you have 0 0 0 dpms timeouts, so I removed that feature lol.
 
 Once you've stow'd the files...
 ```
