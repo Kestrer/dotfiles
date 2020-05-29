@@ -22,8 +22,8 @@ set title " set title of terminal
 " netrw
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
-let g:netrw_sort_sequence = ''
-let g:netrw_sort_options = 'i'
+let g:netrw_sort_sequence = ""
+let g:netrw_sort_options = "i"
 nnoremap <C-n> :Ex<Enter>
 
 "add closing brace
@@ -65,6 +65,8 @@ autocmd FileType html inoremap <// </<C-X><C-O>
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'koxiaet/ron.vim'
+Plug 'rust-lang/rust.vim'
 call plug#end()
 
 function ConfigureCoc()
@@ -76,8 +78,8 @@ function ConfigureCoc()
 	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 	
 	function! s:check_back_space() abort
-		let col = col('.') - 1
-		return !col || getline('.')[col - 1] =~# '\s'
+		let col = col(".") - 1
+		return !col || getline(".")[col - 1] =~# "\s"
 	endfunction
 	
 	" <cr> comfirms completion
@@ -94,10 +96,10 @@ function ConfigureCoc()
 	nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 	function! s:show_documentation()
-		if (index(['vim','help'], &filetype) >= 0)
-			execute 'h '.expand('<cword>')
+		if (index(["vim", "help"], &filetype) >= 0)
+			execute "h ".expand("<cword>")
 		else
-			call CocAction('doHover')
+			call CocAction("doHover")
 		endif
 	endfunction
 endfunction
@@ -116,46 +118,60 @@ inoremap <silent> <M-l> <C-o>:tabnext<CR>
 inoremap <silent> <M-h> <C-o>:tabprevious<CR>
 
 set tabline=%!MyTabLine()
+
+function MakeRelative(path)
+	" find the common denominator of path and cwd, adding "../" to the result as we go
+    let common = getcwd()
+    let result = ""
+    while stridx(a:path, common) == -1
+        let common = fnamemodify(common, ":h")
+        let result = result . "../"
+    endwhile
+	" remove the common denominator from the path
+	let result = result . substitute(a:path, common . "/", "", "")
+	return result
+endfunction
+
 function GetTabText(tab)
-	let tabtext = ''
+	let tabtext = ""
 
 	let buf = tabpagebuflist(a:tab + 1)[tabpagewinnr(a:tab + 1) - 1]
 
-	let tabtext .= bufname(buf)
+	let tabtext .= MakeRelative(fnamemodify(bufname(buf), ":p"))
 
-	if getbufvar(buf, "&buftype") == 'help'
-		let tabtext = fnamemodify(tabtext, ':t') . ' [Help]'
+	if getbufvar(buf, "&buftype") == "help"
+		let tabtext = fnamemodify(tabtext, ":t") . " [Help]"
 	else
-		let tabtext .= ' '
+		let tabtext .= " "
 	endif
 
 	if getbufvar(buf, "&readonly")
-		let tabtext .= '[RO]'
+		let tabtext .= "[RO]"
 	endif
 
 	if getbufvar(buf, "&modified")
-		let tabtext .= '[+]'
+		let tabtext .= "[+]"
 	endif
 
-	if tabtext == ''
-		let tabtext = '[No Name]'
+	if tabtext == ""
+		let tabtext = "[No Name]"
 	endif
 
 	return tabtext
 endfunction
 
 function MyTabLine()
-	let tabline = '' " complete tabline goes here
+	let tabline = "" " complete tabline goes here
 	" loop through each tab page
-	for tab in range(tabpagenr('$'))
+	for tab in range(tabpagenr("$"))
 		" highlight tab if current
-		let tabline .= '%#TabLine'
+		let tabline .= "%#TabLine"
 		if tab + 1 == tabpagenr()
-			let tabline .= 'Sel'
+			let tabline .= "Sel"
 		endif
-		let tabline .= '# ' . GetTabText(tab) . ' '
+		let tabline .= "# " . GetTabText(tab) . " "
 	endfor
 	" after the last tab fill with TabLineFill and reset tab page nr
-	let tabline .= '%#TabLineFill#%T'
+	let tabline .= "%#TabLineFill#%T"
 	return tabline
 endfunction
