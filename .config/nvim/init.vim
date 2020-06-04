@@ -65,7 +65,7 @@ autocmd FileType html inoremap <// </<C-X><C-O>
 
 call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'koxiaet/ron.vim'
+Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
@@ -79,7 +79,7 @@ function ConfigureCoc()
 	
 	function! s:check_back_space() abort
 		let col = col(".") - 1
-		return !col || getline(".")[col - 1] =~# "\s"
+		return !col || getline(".")[col - 1] =~# "\\s"
 	endfunction
 	
 	" <cr> comfirms completion
