@@ -10,6 +10,7 @@ export XDG_DOWNLOAD_DIR="/tmp/downloads"
 
 
 # set dirs
+export ASPELL_CONF="per-conf $XDG_CONFIG_HOME/aspell/aspell.conf; personal $XDG_CONFIG_HOME/aspell/en.pws; repl $XDG_CONFIG_HOME/aspell/en.prepl"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
 export HISTFILE="$XDG_DATA_HOME/bash/history"
 export LESSHISTFILE="$XDG_CACHE_HOME/less/history"

@@ -20,11 +20,15 @@ super+x
 
 # full screen screenshot
 Print
-	exec scrot ~/screenshots/screenshot_%Y-%m-%d-%H:%M:%S.png
+	scrot /tmp/ss && save_screenshot.sh /tmp/ss
 
 # current window screenshot
 super+Print
-	exec scrot -u ~/screenshots/screenshot_%Y-%m-%d-%H:%M:%S.png
+	scrot -u /tmp/ss && save_screenshot.sh /tmp/ss
+
+# area screenshot
+super+shift+Print
+	sleep 0.2; scrot -s /tmp/ss && save_screenshot.sh /tmp/ss
 
 # lock
 super+s

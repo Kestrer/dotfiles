@@ -16,7 +16,6 @@ set signcolumn=yes " always show left column
 set updatetime=300 " make fast
 set ruler " stuff in bottom right
 set colorcolumn=100
-set textwidth=100
 set title " set title of terminal
 
 " netrw
@@ -27,16 +26,16 @@ let g:netrw_sort_options = "i"
 nnoremap <C-n> :Ex<Enter>
 
 "add closing brace
-inoremap {<CR> {<CR>}<Esc>ko
-inoremap (<CR> (<CR>)<Esc>ko
-inoremap [<CR> [<CR>]<Esc>ko
+inoremap {<CR> {<CR>}<Esc>O
+inoremap (<CR> (<CR>)<Esc>O
+inoremap [<CR> [<CR>]<Esc>O
 
 :command! W w
 :command! Q q
 
 " make Y go to end of line (more logical at expense of compatibility)
 nmap Y y$
-" dd -> X now is the same as cc -> S
+" dd = X now is the same as cc = S
 nmap X dd
 
 " make ctrl+e and ctrl+y work in insert mode
@@ -67,43 +66,26 @@ call plug#begin()
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'gutenye/json5.vim'
 call plug#end()
 
-function ConfigureCoc()
-	" Use tab for trigger completion with characters ahead and navigate.
-	inoremap <silent><expr> <TAB>
-		\ pumvisible() ? "\<C-n>" :
-		\ <SID>check_back_space() ? "\<TAB>" :
-		\ coc#refresh()
-	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-	
-	function! s:check_back_space() abort
-		let col = col(".") - 1
-		return !col || getline(".")[col - 1] =~# "\\s"
-	endfunction
-	
-	" <cr> comfirms completion
-	inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-	
-	" rename
-	nmap <leader>rn <Plug>(coc-rename)
-	
-	" navigate diagnostics
-	nmap <silent> [g <Plug>(coc-diagnostic-prev)
-	nmap <silent> ]g <Plug>(coc-diagnostic-next)
+" rename
+nmap <leader>rn <Plug>(coc-rename)
 
-	" K shows documentation
-	nnoremap <silent> K :call <SID>show_documentation()<CR>
+" navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-	function! s:show_documentation()
-		if (index(["vim", "help"], &filetype) >= 0)
-			execute "h ".expand("<cword>")
-		else
-			call CocAction("doHover")
-		endif
-	endfunction
+" K shows documentation
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function s:show_documentation()
+	if (index(["vim", "help"], &filetype) >= 0)
+		execute "h ".expand("<cword>")
+	else
+		call CocAction("doHover")
+	endif
 endfunction
-autocmd FileType rust call ConfigureCoc()
 
 " tabs
 nnoremap <silent> <M-CR> :tab split<CR>
@@ -114,8 +96,8 @@ nnoremap <silent> <M-h> :tabprevious<CR>
 inoremap <silent> <M-CR> <C-o>:tab split<CR>
 inoremap <silent> <M-H> <C-o>:tabmove -1<CR>
 inoremap <silent> <M-L> <C-o>:tabmove +1<CR>
-inoremap <silent> <M-l> <C-o>:tabnext<CR>
-inoremap <silent> <M-h> <C-o>:tabprevious<CR>
+inoremap <silent> <M-l> <Esc>:tabnext<CR>
+inoremap <silent> <M-h> <Esc>:tabprevious<CR>
 
 set tabline=%!MyTabLine()
 

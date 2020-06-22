@@ -184,6 +184,8 @@ settings:
     global: true
   content.javascript.enabled:
     global: true
+  content.media_capture:
+    https://edu.bandlab.com: false
   content.notifications:
     https://internals.rust-lang.org: true
     https://mail.google.com: true
