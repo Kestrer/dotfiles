@@ -137,6 +137,22 @@ function firstpagec() {
 
 # compiles the current rust crate
 function rustcomp() {
-	CRATE="$(cargo metadata --no-deps --format-version=1 | jq -r '["-p\n" + .packages[].name] | join("\n")')"
-	firstpagec "cargo clean ${(f)CRATE} && cargo clippy --all-targets $*"
+	set -e
+	set -o pipefail
+
+	METADATA="$(cargo metadata --no-deps --format-version=1)"
+	CRATE_PATH="$(echo "$PWD" | grep -o "^$(echo "$METADATA" | jq -r '.packages[].manifest_path' | xargs dirname)")"
+	if [ $? -eq 0 ]
+	then
+		# Not a workspace
+		PACKAGES="$(yj -t < "$CRATE_PATH/Cargo.toml" | jq -r '"-p\n" + .package.name')"
+	else
+		# A workspace.
+		PACKAGES="$(echo "$METADATA" | jq -r '["-p\n" + .packages[].name] | join("\n")')"
+	fi
+
+	set +e
+	set +o pipefail
+
+	firstpagec "cargo clean ${(f)PACKAGES} && cargo clippy --all-targets $*"
 }
