@@ -124,6 +124,7 @@ function firstpage() {
 	$SHELL -c "$*" 2>&1 |
 		fnew -w "$(stty size | awk ' { print $2 }')" |
 		head -n $(( $(stty size | awk '{ print $1 }') - 1 ))
+	set +o pipefail
 }
 
 function firstpagec() {
@@ -137,22 +138,5 @@ function firstpagec() {
 
 # compiles the current rust crate
 function rustcomp() {
-	set -e
-	set -o pipefail
-
-	METADATA="$(cargo metadata --no-deps --format-version=1)"
-	CRATE_PATH="$(echo "$PWD" | grep -o "^$(echo "$METADATA" | jq -r '.packages[].manifest_path' | xargs dirname)")"
-	if [ $? -eq 0 ]
-	then
-		# Not a workspace
-		PACKAGES="$(yj -t < "$CRATE_PATH/Cargo.toml" | jq -r '"-p\n" + .package.name')"
-	else
-		# A workspace.
-		PACKAGES="$(echo "$METADATA" | jq -r '["-p\n" + .packages[].name] | join("\n")')"
-	fi
-
-	set +e
-	set +o pipefail
-
-	firstpagec "cargo clean ${(f)PACKAGES} && cargo clippy --all-targets $*"
+	firstpagec "cargo clippy --all-targets $*"
 }
