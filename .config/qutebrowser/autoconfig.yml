@@ -46,7 +46,7 @@ settings:
         <Ctrl+^>: null
         <Ctrl+a>: null
         <Ctrl+b>: scroll page-up
-        <Ctrl+d>: repeat 13 scroll down
+        <Ctrl+d>: scroll-page 0 0.5
         <Ctrl+f>: scroll page-down
         <Ctrl+h>: open qute://history
         <Ctrl+i>: inspector
@@ -54,7 +54,7 @@ settings:
         <Ctrl+q>: null
         <Ctrl+s>: view-source -e
         <Ctrl+t>: null
-        <Ctrl+u>: repeat 13 scroll up
+        <Ctrl+u>: scroll-page 0 -0.5
         <Ctrl+w>: null
         <Ctrl+x>: null
         <Escape>: search ;; fullscreen --leave ;; jseval -q document.activeElement.blur()

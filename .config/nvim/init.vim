@@ -67,6 +67,8 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'gutenye/json5.vim'
+Plug 'maxmellon/vim-jsx-pretty'
+Plug 'nikvdp/ejs-syntax'
 call plug#end()
 
 " rename
