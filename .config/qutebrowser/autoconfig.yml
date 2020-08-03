@@ -49,7 +49,7 @@ settings:
         <Ctrl+d>: scroll-page 0 0.5
         <Ctrl+f>: scroll page-down
         <Ctrl+h>: open qute://history
-        <Ctrl+i>: inspector
+        <Ctrl+i>: devtools window
         <Ctrl+n>: null
         <Ctrl+q>: null
         <Ctrl+s>: view-source -e
@@ -145,6 +145,11 @@ settings:
         tsu: null
         w: tab-clone -w
         wB: null
+        wIh: null
+        wIj: null
+        wIk: null
+        wIl: null
+        wIw: null
         wO: null
         wP: null
         wb: null

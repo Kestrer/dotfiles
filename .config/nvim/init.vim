@@ -69,6 +69,8 @@ Plug 'rust-lang/rust.vim'
 Plug 'gutenye/json5.vim'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'nikvdp/ejs-syntax'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 call plug#end()
 
 " rename

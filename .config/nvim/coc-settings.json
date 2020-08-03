@@ -1,4 +1,6 @@
 {
+	"coc.preferences.rootPatterns": [".git", "package.json"],
 	"rust-analyzer.checkOnSave.command": "clippy",
-	"eslint.run": "onSave"
+	"eslint.run": "onSave",
+	"typescript.showUnused": false
 }
