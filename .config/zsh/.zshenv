@@ -8,7 +8,6 @@ export XDG_CONFIG_DIRS="/etc/xdg"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DOWNLOAD_DIR="/tmp/downloads"
 
-
 # set dirs
 export ASPELL_CONF="per-conf $XDG_CONFIG_HOME/aspell/aspell.conf; personal $XDG_CONFIG_HOME/aspell/en.pws; repl $XDG_CONFIG_HOME/aspell/en.prepl"
 export CARGO_HOME="$XDG_DATA_HOME/cargo"
@@ -43,3 +42,5 @@ export CPATH="/usr/lib/R/include/"
 export C_INCLUDE_PATH="$CPATH"
 export CPLUS_INCLUDE_PATH="$CPATH"
 export GCC_INCLUDE_DIR="$CPATH"
+
+[ -r $ZDOTDIR/.zshenv-private ] && source $ZDOTDIR/.zshenv-private
