@@ -173,6 +173,8 @@ settings:
         zz: download
         '{{': null
         '}}': null
+  colors.webpage.prefers_color_scheme_dark:
+    global: true
   content.autoplay:
     global: false
   content.geolocation:

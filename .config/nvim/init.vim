@@ -72,6 +72,7 @@ Plug 'nikvdp/ejs-syntax'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'pest-parser/pest.vim'
 call plug#end()
 
 " rename

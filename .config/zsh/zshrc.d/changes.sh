@@ -17,7 +17,7 @@ function mkdir() {
 }
 
 function man() {
-	MANPAGES="$(find ${(s: :)MANPATH//:/ } -regextype egrep -iregex ".*man/man([0-9])/$1.\\1p?")"
+	MANPAGES="$(find ${(s: :)MANPATH//:/ } -regextype egrep -iregex ".*man/man([0-9]p?)/$1.\\1")"
 	if [[ -z "$MANPAGES" ]]
 	then
 		echo No Manpage Found.

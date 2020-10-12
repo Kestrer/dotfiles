@@ -46,11 +46,6 @@ function pretex() {
 	$READER *.pdf
 }
 
-# fine: more useful find
-function fine() {
-	find . -mount -name $@ 2>/dev/null
-}
-
 # display manpage in web browser
 function wman() {
 	man -cThtml $@ > /tmp/manpage.html
