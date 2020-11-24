@@ -143,6 +143,7 @@ settings:
         tsH: null
         tsh: null
         tsu: null
+        u: undo --window
         w: tab-clone -w
         wB: null
         wIh: null
@@ -191,7 +192,11 @@ settings:
     global: true
   content.javascript.enabled:
     global: true
-  content.media_capture:
+  content.media.audio_capture:
+    https://edu.bandlab.com: false
+  content.media.audio_video_capture:
+    https://edu.bandlab.com: false
+  content.media.video_capture:
     https://edu.bandlab.com: false
   content.notifications:
     https://internals.rust-lang.org: true
@@ -200,6 +205,7 @@ settings:
     https://metro.co.uk: false
     https://new.reddit.com: false
     https://outlook.office365.com: true
+    https://rust-lang.zulipchat.com: true
     https://users.rust-lang.org: true
     https://web.whatsapp.com: true
     https://www.journaldev.com: false
@@ -228,6 +234,8 @@ settings:
     global: 10pt default_family
   statusbar.position:
     global: top
+  statusbar.show:
+    global: always
   statusbar.widgets:
     global:
     - keypress

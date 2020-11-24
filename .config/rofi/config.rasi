@@ -1,0 +1,4 @@
+configuration {
+	location: 1;
+	theme: "/usr/share/rofi/themes/solarized.rasi";
+}

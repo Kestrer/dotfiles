@@ -17,6 +17,7 @@ set updatetime=300 " make fast
 set ruler " stuff in bottom right
 set colorcolumn=100
 set title " set title of terminal
+set mouse=a " use mouse
 
 " netrw
 let g:netrw_banner = 0
