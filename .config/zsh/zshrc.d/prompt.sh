@@ -27,8 +27,7 @@ bindkey -v '^W' backward-kill-word
 bindkey -v '^U' kill-line
 export KEYTIMEOUT=1
 
-# st-exclusive stuff
-if [ $TERM = 'st-256color' ]
+if [ $TERM != 'linux' ]
 then
 	# change cursor shape for different vi modes
 
@@ -53,11 +52,11 @@ then
 		echo -n "\e[5 q"
 
 		# set title
-		echo -n "\e]0;st: $1\a"
+		echo -n "\e]0;$TERM: $1\a"
 	}
 	function precmd() {
 		# set terminal title
-		printf "\e]0;st: zsh: ${PWD##*/}\a"
+		printf "\e]0;$TERM: zsh: ${PWD##*/}\a"
 	}
 fi
 

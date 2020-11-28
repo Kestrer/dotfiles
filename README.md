@@ -5,6 +5,7 @@ otherwise bad things will happen), and to uninstall run `stow -D .`.
 
 ## Required Software:
 
+- alacritty
 - clipmenu (+ xsel + clipnotify, using rofi instead of dmenu)
 
 To use rofi instead of dmenu on Void:
@@ -61,31 +62,6 @@ Once you've stow'd the files...
 cd ~/.local/src/slock
 make
 sudo make install
-```
-- st (with boxdraw + fix keyboard input + newterm + scrollback + solarized patches)
-```
-cd ~/.local/src
-git clone https://git.suckless.org/st
-cd st
-curl -O https://st.suckless.org/patches/boxdraw/st-boxdraw_v2-0.8.3.diff \
- -O https://st.suckless.org/patches/fix_keyboard_input/st-fix-keyboard-input-20180605-dc3b5ba.diff \
- -O https://st.suckless.org/patches/newterm/st-newterm-0.8.2.diff \
- -O https://st.suckless.org/patches/scrollback/st-scrollback-20200419-72e3f6c.diff
-git apply st-boxdraw_v2-0.8.3.diff st-fix-keyboard-input-20180605-dc3b5ba.diff st-newterm-0.8.2.diff
-```
-The newterm and scrollback patches conflict with each other. To resolve this, edit
-`st-scrollback-20200419-72e3f6c.diff` and do the following:
-- Put ` 	{ TERMMOD,              XK_Return,      newterm,        {.i =  0} },` (line 189 of
-  `config.def.h`) between lines 8 and 9 of the patch.
-- Put ` void newterm(const Arg *);` (line 84 of `st.h`) between lines 349 and 350 of the patch.
-```
-git apply st-scrollback-20200419-72e3f6c.diff
-rm config.mk
-```
-Once you've stow'd the files...
-```
-cd ~/.local/src/st
-make install
 ```
 - stow
 - sxhkd

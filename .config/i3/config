@@ -5,7 +5,7 @@
 set $mod mod4
 
 # Font for window titles. Will also be used by the bar unless a different font is used in the bar {} block below.
-font pango:monospace 8
+font pango:sans 8
 
 # kill window
 bindsym $mod+Shift+q kill
@@ -150,14 +150,13 @@ bar {
 	}
 	i3bar_command exec i3bar
 	status_command exec i3status
-	font pango:monospace 8
 	position top
 }
 
 #class                  border   bg       text     indicator child_border
 client.focused          $violet  $violet  $base3   $base3    $violet
 client.focused_inactive $violet  $base03  $base3   $base3    $base00
-client.unfocused        $base03  $base03  $base00  $base3    $base03
+client.unfocused        $base02  $base03  $base00  $base3    $base03
 client.urgent           $red     $red     $base3   $base3    $red
 client.placeholder      $none    $violet  $base3   $none     $base00
 

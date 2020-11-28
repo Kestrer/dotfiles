@@ -6,7 +6,6 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias pcre2grep='pcre2grep --color=auto'
 alias xclip="xclip -selection clipboard"
-alias rustfmt="rustfmt --edition 2018"
 
 # "mkdir -c" mkdirs and cds
 function mkdir() {

@@ -133,5 +133,10 @@ function firstpagec() {
 
 # compiles the current rust crate
 function rustcomp() {
-	firstpagec "cargo clippy --all-targets $*"
+	if [[ $1 = \+* ]]
+	then
+		firstpagec "cargo $1 clippy --all-targets ${@:2}"
+	else
+		firstpagec "cargo clippy --all-targets $*"
+	fi
 }
