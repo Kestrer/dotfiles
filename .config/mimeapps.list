@@ -13,6 +13,7 @@ audio/x-aiff=mpv.desktop
 audio/x-ms-wma=mpv.desktop
 audio/x-vorbis+ogg=mpv.desktop
 audio/x-wav=mpv.desktop
+image/svg+xml=org.qutebrowser.qutebrowser.desktop
 text/html=org.qutebrowser.qutebrowser.desktop
 text/xml=org.qutebrowser.qutebrowser.desktop
 video/mpeg=mpv.desktop

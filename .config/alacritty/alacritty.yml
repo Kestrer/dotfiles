@@ -15,22 +15,22 @@ colors:
     primary:
         background: '#002b36'
         foreground: '#fdf6e3'
-        dim_foreground: '#fdf6e3'
-        bright_foreground: '#fdf6e3'
+        dim_foreground: '#839496'
+        bright_foreground: '#ffffff'
     search:
         background: CellForeground
         foreground: CellBackground
     normal:
-        black   : '#073642'
+        black   : '#002b36'
         red     : '#dc322f'
         green   : '#859900'
         yellow  : '#b58900'
         blue    : '#268bd2'
         magenta : '#d33682'
         cyan    : '#2aa198'
-        white   : '#eee8d5'
+        white   : '#93a1a1'
     bright:
-        black   : '#eee8d5'
+        black   : '#073642'
         red     : '#cb4b16'
         green   : '#586e75'
         yellow  : '#657b83'

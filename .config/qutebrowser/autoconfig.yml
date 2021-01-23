@@ -179,6 +179,7 @@ settings:
   content.autoplay:
     global: false
   content.geolocation:
+    https://www.francomanca.co.uk: true
     https://www.google.com: false
     https://www.samsung.com: false
     https://www.southwesternrailway.com: true
@@ -198,6 +199,7 @@ settings:
     https://edu.bandlab.com: false
   content.media.video_capture:
     https://edu.bandlab.com: false
+    https://web.whatsapp.com: false
   content.notifications:
     https://internals.rust-lang.org: true
     https://mail.google.com: true

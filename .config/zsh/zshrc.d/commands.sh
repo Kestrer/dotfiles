@@ -117,8 +117,8 @@ function firstpage() {
 	esac
 	sclear
 	$SHELL -c "$*" 2>&1 |
-		fnew -w "$(stty size | awk ' { print $2 }')" |
-		head -n $(( $(stty size | awk '{ print $1 }') - 1 ))
+		fnew -w "$(tput cols)" |
+		head -n $(( $(tput lines) - 1 ))
 	set +o pipefail
 }
 
@@ -139,4 +139,9 @@ function rustcomp() {
 	else
 		firstpagec "cargo clippy --all-targets $*"
 	fi
+}
+
+# cd & l
+function cl() {
+	cd $1 && l
 }
