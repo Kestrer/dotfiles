@@ -26,13 +26,14 @@ let g:netrw_sort_sequence = ""
 let g:netrw_sort_options = "i"
 nnoremap <C-n> :Ex<Enter>
 
-"add closing brace
+" add closing brace
 inoremap {<CR> {<CR>}<Esc>O
 inoremap (<CR> (<CR>)<Esc>O
 inoremap [<CR> [<CR>]<Esc>O
 
-:command! W w
-:command! Q q
+command! W w
+command! Q q
+command! E e
 
 " make Y go to end of line (more logical at expense of compatibility)
 nmap Y y$
@@ -64,20 +65,33 @@ autocmd FileType c,cpp inoremap #prag <Esc>:let @f = fileheader<Enter>i#pragma o
 autocmd FileType html inoremap <// </<C-X><C-O>
 
 call plug#begin()
+Plug 'cespare/vim-toml'
+Plug 'gutenye/json5.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'nikvdp/ejs-syntax'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'pest-parser/pest.vim'
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
 Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
-Plug 'gutenye/json5.vim'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'nikvdp/ejs-syntax'
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-Plug 'pest-parser/pest.vim'
 call plug#end()
 
 " rename
 nmap <leader>rn <Plug>(coc-rename)
+
+" code action
+nmap <silent> <leader>nf <Plug>(coc-codeaction)
+nmap <silent> <leader>nl <Plug>(coc-codeaction-line)
+nmap <silent> <leader>ns v<Plug>(coc-codeaction-selected)
+vmap <silent> <leader>ns <Plug>(coc-codeaction-selected)
+
+" fix
+nmap <silent> <leader>f <Plug>(coc-fix-current)
+
+" cargo.toml
+command! Ecargo CocCommand rust-analyzer.openCargoToml
 
 " navigate diagnostics
 nmap <silent> [g <Plug>(coc-diagnostic-prev)

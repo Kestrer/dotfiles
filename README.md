@@ -42,7 +42,6 @@ ln -s ~/.local/src/NeoSolarized/colors/NeoSolarized.vim ~/.config/nvim/colors/
 - qutebrowser
 - rofi
 - rofi-calc
-- rust-analyzer (`cargo install --git https://github.com/rust-analyzer/rust-analyzer rust-analyzer`)
 - rustup
 - scrot
 - slock (with dpms patch)

@@ -5,8 +5,8 @@ from PyQt5.QtCore import QUrl
 
 REDIRECT_REGEXES = [
     (
-        r"^https://doc\.rust-lang\.org(?!/stable/std)(?:/stable|/beta|/nightly|)/(?:std|alloc|core(?!/arch))",
-        r"https://doc.rust-lang.org/stable/std",
+        r"^https://doc\.rust-lang\.org/(beta|nightly)",
+        r"https://doc.rust-lang.org/stable",
     ),
     (
         r"^https://docs\.serde\.rs/(erased_serde|serde|serde_bytes|serde_derive|serde_json|serde_test|serde_transcode|serde_yaml)/",
