@@ -174,8 +174,8 @@ settings:
         zz: download
         '{{': null
         '}}': null
-  colors.webpage.prefers_color_scheme_dark:
-    global: true
+  colors.webpage.preferred_color_scheme:
+    global: dark
   content.autoplay:
     global: false
   content.geolocation:
@@ -211,7 +211,9 @@ settings:
     https://users.rust-lang.org: true
     https://web.whatsapp.com: true
     https://www.journaldev.com: false
+    https://www.ladbible.com: false
     https://www.reddit.com: false
+    https://www.zdnet.com: false
   content.plugins:
     global: true
   content.register_protocol_handler:
@@ -228,7 +230,7 @@ settings:
     global: -1
   editor.command:
     global:
-    - st
+    - alacritty
     - -e
     - nvim
     - '{file}'
