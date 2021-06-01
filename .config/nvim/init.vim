@@ -78,6 +78,9 @@ Plug 'ron-rs/ron.vim'
 Plug 'rust-lang/rust.vim'
 call plug#end()
 
+" Don't start CoC
+" let g:coc_start_at_startup=0
+
 " rename
 nmap <leader>rn <Plug>(coc-rename)
 
