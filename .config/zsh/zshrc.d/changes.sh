@@ -6,6 +6,9 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias pcre2grep='pcre2grep --color=auto'
 alias xclip="xclip -selection clipboard"
+function cd() {
+	builtin cd $1 && l
+}
 
 # "mkdir -c" mkdirs and cds
 function mkdir() {

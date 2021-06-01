@@ -140,8 +140,3 @@ function rustcomp() {
 		firstpagec "cargo clippy --all-targets $*"
 	fi
 }
-
-# cd & l
-function cl() {
-	cd $1 && l
-}

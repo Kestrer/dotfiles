@@ -3,7 +3,6 @@
 # profile
 source $ZDOTDIR/.zprofile
 
-for script in $ZDOTDIR/zshrc.d/*
-do
-	source $script
-done
+source $ZDOTDIR/zshrc.d/commands.sh
+source $ZDOTDIR/zshrc.d/changes.sh
+source $ZDOTDIR/zshrc.d/prompt.sh
