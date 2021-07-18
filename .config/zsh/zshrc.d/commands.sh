@@ -109,12 +109,13 @@ function md2pdf() {
 }
 
 function firstpage() {
+	if [ $# = 0 ]
+	then
+		echo "Prints the first page of a command's output."
+		return 0
+	fi
+
 	set -o pipefail
-	case $# in
-		0)
-			echo "Prints the first page of a command's output."
-			return;;
-	esac
 	sclear
 	$SHELL -c "$*" 2>&1 |
 		fnew -w "$(tput cols)" |
@@ -122,21 +123,28 @@ function firstpage() {
 	set +o pipefail
 }
 
-function firstpagec() {
-	case $# in
-		0)
-			echo "Like firstpage, but appends --color=always to the command."
-			return;;
-	esac
-	firstpage $* --color=always
+# `crab`, but the first argument provides extra flags to pass to Cargo
+function crab-args() {
+	if [[ $# = 1 || $2 = \-* ]]
+	then
+		firstpage "cargo clippy --color=always $1 ${@:2}"
+	elif [[ $2 = \+* ]]
+	then
+		if [[ $# = 2 || $3 = \-* ]]
+		then
+			firstpage "cargo $2 clippy --color=always $1 ${@:3}"
+		else
+			firstpage "cargo $2 $3 --color=always $1 ${@:4}"
+		fi
+	else
+		firstpage "cargo $2 --color=always $1 ${@:3}"
+	fi
 }
 
-# compiles the current rust crate
-function rustcomp() {
-	if [[ $1 = \+* ]]
-	then
-		firstpagec "cargo $1 clippy --all-targets ${@:2}"
-	else
-		firstpagec "cargo clippy --all-targets $*"
-	fi
+# Improved cargo
+function crab() {
+	crab-args --all-targets $*
+}
+function crab-st() {
+	crab-args '' $*
 }
